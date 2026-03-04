@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chương 4: Finance — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --sage: #6b8e7a; --sage-light: #d8e6de; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; --gold: #b8954a; --terracotta: #c45a3b; --clay: #8b5e3c; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --sage: #8aab9a; --sage-light: rgba(138,171,154,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--sage-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__title { font-family: var(--font-display); font-size: 14px; color: var(--text-dim); }
+    .header__chapter { font-family: var(--font-display); font-size: 28px; }
+    .hero { text-align: center; padding: 24px 0 32px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--sage); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(32px, 6vw, 48px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 16px; margin-bottom: 12px; }
+    .hero__phrase { font-family: var(--font-mono); font-size: 14px; color: var(--sage); background: var(--surface); padding: 12px 20px; border-radius: 8px; display: inline-block; }
+    .skills-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+    .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; }
+    .skill-card:hover { transform: translateY(-2px); }
+    .skill-card__num { font-family: var(--font-display); font-size: 28px; color: var(--sage); }
+    .skill-card:nth-child(2) .skill-card__num { color: var(--terracotta); }
+    .skill-card:nth-child(3) .skill-card__num { color: var(--gold); }
+    .skill-card:nth-child(4) .skill-card__num { color: var(--clay); }
+    .skill-card:nth-child(5) .skill-card__num { color: var(--sage); }
+    .skill-card:nth-child(6) .skill-card__num { color: var(--gold); }
+    .skill-card:nth-child(7) .skill-card__num { color: #7a6b9a; }
+    .skill-card__content h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 4px; }
+    .skill-card__content p { font-size: 13px; color: var(--text-dim); }
+    .skill-card__arrow { font-size: 18px; color: var(--text-dim); }
+    .memory-box { background: var(--surface); border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+    .memory-box h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; text-align: center; }
+    .memory-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .memory-item { background: var(--bg); padding: 12px 8px; border-radius: 8px; text-align: center; font-size: 11px; }
+    .memory-item span { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--sage); margin-bottom: 4px; }
+    .footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 18px; }
+    @media (max-width: 600px) { .skill-card { grid-template-columns: 1fr; text-align: center; } .skill-card__arrow { display: none; } .memory-grid { grid-template-columns: repeat(4, 1fr); } .footer-nav { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="pm-skills-story-index.html" class="header__back">←</a>
+      <div><div class="header__title">PM Skills Story</div><div class="header__chapter">Chương 4</div></div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Level 4: Business & Finance</div>
+      <h1 class="hero__title">💰 Mở Sổ Sách, Quản Lý Tiền Bạc</h1>
+      <p class="hero__subtitle">7 Skills để hiểu và quản lý tài chính sản phẩm</p>
+      <div class="hero__phrase">Quy tắc nhớ: Thu — Chi — Bảng — Đầu — Kiếm — Giá — Khám</div>
+    </div>
+    <div class="skills-list">
+      <div class="skill-card"><div class="skill-card__num">01</div><div class="skill-card__content"><h3>SaaS Revenue Metrics</h3><p>"THU được bao nhiêu?" — MRR, ARR, Churn, NRR</p></div><div class="skill-card__arrow">→</div></div>
+      <div class="skill-card"><div class="skill-card__num">02</div><div class="skill-card__content"><h3>SaaS Economics</h3><p>"CHI bao nhiêu cho 1 khách?" — CAC, LTV, Payback</p></div><div class="skill-card__arrow">→</div></div>
+      <div class="skill-card"><div class="skill-card__num">03</div><div class="skill-card__content"><h3>Finance Metrics Quickref</h3><p>"BẢNG đồng hồ sức khỏe" — 32 chỉ số cần theo dõi</p></div><div class="skill-card__arrow">→</div></div>
+      <div class="skill-card"><div class="skill-card__num">04</div><div class="skill-card__content"><h3>Feature Investment Advisor</h3><p>"ĐẦU TƯ cái nào sinh lời?" — Tính ROI từng feature</p></div><div class="skill-card__arrow">→</div></div>
+      <div class="skill-card"><div class="skill-card__num">05</div><div class="skill-card__content"><h3>Acquisition Channel Advisor</h3><p>"KIẾM khách ở đâu?" — So sánh kênh marketing</p></div><div class="skill-card__arrow">→</div></div>
+      <div class="skill-card"><div class="skill-card__num">06</div><div class="skill-card__content"><h3>Finance-based Pricing</h3><p>"GIÁ bao nhiêu?" — Định giá dựa trên data</p></div><div class="skill-card__arrow">→</div></div>
+      <div class="skill-card"><div class="skill-card__num">07</div><div class="skill-card__content"><h3>Business Health Diagnostic</h3><p>"KHÁM tổng quát" — Chẩn đoán sức khỏe doanh nghiệp</p></div><div class="skill-card__arrow">→</div></div>
+    </div>
+    <div class="memory-box">
+      <h3>📚 Quy tắc nhớ: Thu — Chi — Bảng — Đầu — Kiếm — Giá — Khám</h3>
+      <div class="memory-grid">
+        <div class="memory-item"><span>📈 T</span>HU</div>
+        <div class="memory-item"><span>💸 C</span>HI</div>
+        <div class="memory-item"><span>📋 B</span>ẢNG</div>
+        <div class="memory-item"><span>🏗️ Đ</span>ẦU</div>
+        <div class="memory-item"><span>📢 K</span>IẾM</div>
+        <div class="memory-item"><span>💲 G</span>IÁ</div>
+        <div class="memory-item"><span>🩺 K</span>HÁM</div>
+      </div>
+    </div>
+    <div class="footer-nav">
+      <a href="chapter-3-strategy.html" class="nav-btn"><span>← Back to</span><strong>Chương 3: Strategy</strong></a>
+      <a href="chapter-5-advanced.html" class="nav-btn"><span>Next →</span><strong>Chương 5: Advanced</strong></a>
+    </div>
+  </div>
+</body>
+</html>

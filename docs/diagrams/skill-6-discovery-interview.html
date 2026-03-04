@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #6: Discovery Interview — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --clay: #8b5e3c; --clay-light: #e8ddd4; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; --terracotta: #c45a3b; --sage: #6b8e7a; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --clay: #c4906a; --clay-light: rgba(196,144,106,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--clay-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--clay); }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--clay); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+    .insight { background: var(--surface); border-left: 4px solid var(--clay); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+    .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+    @media (max-width: 600px) { .guide-grid { grid-template-columns: 1fr; } }
+    .guide-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .guide-card h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .guide-card.do h3 { color: var(--sage); }
+    .guide-card.dont h3 { color: var(--terracotta); }
+    .guide-card ul { list-style: none; }
+    .guide-card li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .guide-card li:last-child { border: none; }
+    .guide-card.do li::before { content: '✓'; color: var(--sage); margin-right: 10px; }
+    .guide-card.dont li::before { content: '✗'; color: var(--terracotta); margin-right: 10px; }
+    .tips { background: var(--surface); border-radius: 14px; padding: 24px; }
+    .tips h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; }
+    .tips ol { padding-left: 20px; }
+    .tips li { padding: 8px 0; font-size: 14px; color: var(--text); }
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-2-discovery.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 2 → Skill #6</div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Skill #6 | Level 2: Discovery</div>
+      <h1 class="hero__title">Discovery Interview</h1>
+      <p class="hero__subtitle">"Đến TẬN NHÀ hỏi chuyện" — Phỏng vấn khách hàng để hiểu thực tế</p>
+    </div>
+    <div class="insight"><p class="insight__text">"Đừng hỏi khách hàng muốn gì — hãy hỏi họ SỐNG thế nào."</p></div>
+    <div class="guide-grid">
+      <div class="guide-card do">
+        <h3>✅ Nên hỏi</h3>
+        <ul>
+          <li>"Kể cho tôi một ngày bình thường của gia đình anh?"</li>
+          <li>"Khoảnh khắc nào trong ngày anh thấy khó chịu nhất?"</li>
+          <li>"Anh đã thử giải quyết vấn đề này chưa?"</li>
+          <li>"Anh đã từng cảm thấy như thế nào khi...?"</li>
+        </ul>
+      </div>
+      <div class="guide-card dont">
+        <h3>❌ Không nên hỏi</h3>
+        <ul>
+          <li>"Anh có muốn nhà 3 phòng ngủ không?" (dẫn dắt)</li>
+          <li>"Anh thích thiết kế hiện đại đúng không?" (áp đặt)</li>
+          <li>"Anh sẽ trả bao nhiêu cho tính năng này?" (giả thuyết)</li>
+          <li>"Sản phẩm của tôi có tốt không?" (thiên vị)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tips">
+      <h3>💡 5 Tips cho Discovery Interview hiệu quả</h3>
+      <ol>
+        <li><strong>Ngồi tại nhà họ</strong> — Hiểu context thực, không phải phòng họp</li>
+        <li><strong>Hỏi về HÀNH VI, không phải ý kiến</strong> — "Anh làm gì" tốt hơn "Anh nghĩ gì"</li>
+        <li><strong>Đào sâu với "Tại sao?"</strong> — 5 lần "tại sao" để tìm root cause</li>
+        <li><strong>Im lặng</strong> — Để khách hàng suy nghĩ, đừng lấp đầy khoảng trống</li>
+        <li><strong>Ghi chép và quan sát</strong> — Body language nói nhiều hơn lời nói</li>
+      </ol>
+    </div>
+    <div class="nav-footer">
+      <a href="chapter-2-discovery.html" class="nav-btn"><span>← Back to</span><strong>Chương 2</strong></a>
+      <a href="skill-7-customer-journey-map.html" class="nav-btn"><span>Next →</span><strong>Skill #7: Journey Map</strong></a>
+    </div>
+  </div>
+</body>
+</html>

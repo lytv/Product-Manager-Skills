@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #1: Problem Statement — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --terracotta: #c45a3b;
+      --terracotta-light: #e8d5cd;
+      --clay: #8b5e3c;
+      --gold: #b8954a;
+      --sage: #6b8e7a;
+      --bg: #faf7f2;
+      --surface: #ffffff;
+      --surface-warm: #f5efe6;
+      --border: rgba(80, 55, 40, 0.12);
+      --text: #2d1f14;
+      --text-dim: #6b5a4f;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1512;
+        --surface: #252019;
+        --surface-warm: #2d241c;
+        --border: rgba(255, 255, 255, 0.06);
+        --text: #f0e6dc;
+        --text-dim: #9a8a7c;
+        --terracotta: #e07850;
+        --terracotta-light: rgba(224, 120, 80, 0.15);
+        --clay: #c4906a;
+        --gold: #d4b06a;
+        --sage: #8aab9a;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 0% 0%, var(--terracotta-light) 0%, transparent 50%), radial-gradient(ellipse at 100% 100%, rgba(184, 149, 74, 0.1) 0%, transparent 40%);
+      color: var(--text);
+      font-family: var(--font-body);
+      padding: 32px;
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: transform 0.2s; }
+    .header__back:hover { transform: translateX(-4px); }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--terracotta); }
+
+    .hero { text-align: center; margin-bottom: 40px; padding: 24px 0; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--terracotta); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; max-width: 600px; margin: 0 auto; }
+
+    .quote-box { background: var(--surface); border-left: 4px solid var(--terracotta); padding: 28px 36px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .quote-box p { font-family: var(--font-display); font-size: 22px; line-height: 1.5; }
+    .quote-box__attr { margin-top: 12px; font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); }
+
+    .insight { text-align: center; padding: 20px; margin-bottom: 32px; }
+    .insight__icon { font-size: 28px; margin-bottom: 8px; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; color: var(--clay); }
+
+    .elements-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px; }
+    @media (max-width: 600px) { .elements-grid { grid-template-columns: 1fr; } }
+
+    .element-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden; }
+    .element-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--terracotta); }
+    .element-card:nth-child(2)::before { background: var(--clay); }
+    .element-card:nth-child(3)::before { background: var(--gold); }
+    .element-card:nth-child(4)::before { background: var(--sage); }
+    .element-card__label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--terracotta); margin-bottom: 6px; }
+    .element-card:nth-child(2) .element-card__label { color: var(--clay); }
+    .element-card:nth-child(3) .element-card__label { color: var(--gold); }
+    .element-card:nth-child(4) .element-card__label { color: var(--sage); }
+    .element-card__q { font-family: var(--font-display); font-size: 18px; margin-bottom: 10px; }
+    .element-card__a { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+    .element-card__a strong { color: var(--text); }
+
+    .problem-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
+    @media (max-width: 600px) { .problem-items { grid-template-columns: 1fr; } }
+
+    .problem-item { background: var(--surface); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid var(--border); }
+    .problem-item__icon { font-size: 28px; margin-bottom: 8px; }
+    .problem-item__title { font-family: var(--font-display); font-size: 16px; margin-bottom: 6px; }
+    .problem-item__desc { font-size: 13px; color: var(--text-dim); }
+
+    .principle-box { background: linear-gradient(135deg, var(--terracotta-light) 0%, rgba(184, 149, 74, 0.15) 100%); border-radius: 14px; padding: 28px; text-align: center; }
+    .principle-box__text { font-family: var(--font-display); font-size: 22px; }
+
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; transition: transform 0.2s; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-1-foundation.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 1 → Skill #1</div>
+    </header>
+
+    <div class="hero">
+      <div class="hero__kicker">Skill #1 | Level 1: Foundation</div>
+      <h1 class="hero__title">Problem Statement</h1>
+      <p class="hero__subtitle">Bước đầu tiên: Ngồi xuống lắng nghe khách hàng kể về nỗi đau của họ</p>
+    </div>
+
+    <blockquote class="quote-box">
+      <p>"Gia đình tôi 5 người sống trong căn phòng 20m². Con tôi không có chỗ học bài, vợ chồng tôi mất ngủ vì quá chật. Tôi cảm thấy mình là một người cha tệ."</p>
+      <div class="quote-box__attr">— Anh Minh, 35 tuổi, nhân viên văn phòng</div>
+    </blockquote>
+
+    <div class="insight">
+      <div class="insight__icon">💡</div>
+      <p class="insight__text">"Chưa hiểu NỖI ĐAU thì chưa nên vẽ bản thiết kế."</p>
+    </div>
+
+    <h3 style="font-family: var(--font-display); font-size: 22px; margin-bottom: 16px; text-align: center;">4 Yếu Tố Cần Nắm Bắt</h3>
+    <div class="elements-grid">
+      <article class="element-card">
+        <div class="element-card__label">Ai?</div>
+        <h4 class="element-card__q">Đang gặp vấn đề?</h4>
+        <p class="element-card__a"><strong>Anh Minh</strong> và gia đình 5 người. Anh 35 tuổi, nhân viên văn phòng, thu nhập 15 triệu/tháng.</p>
+      </article>
+      <article class="element-card">
+        <div class="element-card__label">Vấn đề gì?</div>
+        <h4 class="element-card__q">Cần giải quyết?</h4>
+        <p class="element-card__a"><strong>Nhà quá chật, không có không gian riêng.</strong> Con không có chỗ học, vợ chồng mất ngủ vì ồn.</p>
+      </article>
+      <article class="element-card">
+        <div class="element-card__label">Tại sao?</div>
+        <h4 class="element-card__q">Quan trọng?</h4>
+        <p class="element-card__a"><strong>Ảnh hưởng sức khỏe và tương lai con.</strong> Con học kém vì không có chỗ tập trung, sức khỏe giảm vì thiếu ngủ.</p>
+      </article>
+      <article class="element-card">
+        <div class="element-card__label">Cảm xúc</div>
+        <h4 class="element-card__q">Như thế nào?</h4>
+        <p class="element-card__a"><strong>Cảm thấy bất lực và tội lỗi.</strong> "Tôi cảm thấy mình là một người cha tệ" — nỗi đau sâu nhất.</p>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-display); font-size: 20px; margin-bottom: 16px; text-align: center;">3 Nỗi Đau Cụ Thể</h3>
+    <div class="problem-items">
+      <div class="problem-item">
+        <div class="problem-item__icon">👶</div>
+        <h4 class="problem-item__title">Con không có chỗ học</h4>
+        <p class="problem-item__desc">Học trên bàn ăn, bị TV làm mất tập trung</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-item__icon">😴</div>
+        <h4 class="problem-item__title">Mất ngủ vì quá chật</h4>
+        <p class="problem-item__desc">5 người ngủ chung 1 phòng, trẻ quấy khóc</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-item__icon">😔</div>
+        <h4 class="problem-item__title">Cảm thấy tội lỗi</h4>
+        <p class="problem-item__desc">Anh Minh cảm thấy mình là người cha tệ</p>
+      </div>
+    </div>
+
+    <div class="principle-box">
+      <p class="principle-box__text">"Chưa hiểu NỖI ĐAU thì chưa nên vẽ bản thiết kế."</p>
+    </div>
+
+    <div class="nav-footer">
+      <a href="chapter-1-foundation.html" class="nav-btn">
+        <span>← Back to</span>
+        <strong>Chương 1</strong>
+      </a>
+      <a href="skill-2-proto-persona.html" class="nav-btn">
+        <span>Next →</span>
+        <strong>Skill #2: Proto-Persona</strong>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #4: Jobs-to-be-Done — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --clay: #8b5e3c;
+      --clay-light: #e8ddd4;
+      --terracotta: #c45a3b;
+      --sage: #6b8e7a;
+      --gold: #b8954a;
+      --bg: #faf7f2;
+      --surface: #ffffff;
+      --border: rgba(80, 55, 40, 0.12);
+      --text: #2d1f14;
+      --text-dim: #6b5a4f;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06);
+        --text: #f0e6dc; --text-dim: #9a8a7c;
+        --clay: #c4906a; --clay-light: rgba(196,144,106,0.15);
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--clay-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; line-height: 1.55; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__back:hover { transform: translateX(-4px); }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--clay); }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--clay); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+    .insight { background: var(--surface); border-left: 4px solid var(--clay); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+    .quote-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 24px; text-align: center; }
+    .quote-box__text { font-family: var(--font-display); font-size: 22px; font-style: italic; }
+    .jobs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    @media (max-width: 700px) { .jobs-grid { grid-template-columns: 1fr; } }
+    .job-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .job-card__icon { font-size: 32px; margin-bottom: 12px; }
+    .job-card__type { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--clay); margin-bottom: 8px; }
+    .job-card__title { font-family: var(--font-display); font-size: 18px; margin-bottom: 10px; }
+    .job-card__desc { font-size: 14px; color: var(--text-dim); }
+    .pains-gains { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+    @media (max-width: 700px) { .pains-gains { grid-template-columns: 1fr; } }
+    .pg-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .pg-card h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .pg-card ul { list-style: none; }
+    .pg-card li { padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
+    .pg-card li:last-child { border: none; }
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-1-foundation.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 1 → Skill #4</div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Skill #4 | Level 1: Foundation</div>
+      <h1 class="hero__title">Jobs-to-be-Done</h1>
+      <p class="hero__subtitle">"Vì sao anh Minh THỰC SỰ muốn xây nhà?" — Đào sâu hơn nữa câu trả lời</p>
+    </div>
+    <div class="insight"><p class="insight__text">"Người ta không mua MŨI KHOAN, người ta mua CÁI LỖ TRÊN TƯỜNG — và sâu hơn nữa, họ mua BỨC ẢNH GIA ĐÌNH treo trên tường đó."</p></div>
+    <div class="quote-box"><p class="quote-box__text">"Người ta không mua sản phẩm. Họ mua phiên bản tốt hơn của bản thân họ."</p></div>
+    <h3 style="font-family: var(--font-display); font-size: 22px; margin-bottom: 16px; text-align: center;">3 Loại Jobs (Công việc)</h3>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div class="job-card__icon">⚙️</div>
+        <div class="job-card__type">Functional</div>
+        <h4 class="job-card__title">Công việc chức năng</h4>
+        <p class="job-card__desc">Có chỗ ở rộng hơn, đủ phòng cho gia đình 5 người. Đủ không gian để nấu ăn, ngủ nghỉ, làm việc.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-card__icon">👥</div>
+        <div class="job-card__type">Social</div>
+        <h4 class="job-card__title">Công việc xã hội</h4>
+        <p class="job-card__desc">Được tôn trọng trong cộng đồng. "Anh Minh giỏi, mua được nhà." Không còn bị hỏi "bao giờ mua nhà?"</p>
+      </div>
+      <div class="job-card">
+        <div class="job-card__icon">❤️</div>
+        <div class="job-card__type">Emotional</div>
+        <h4 class="job-card__title">Công việc cảm xúc</h4>
+        <p class="job-card__desc">Cảm thấy mình là người cha có trách nhiệm. Con cái có tương lai tốt hơn. Gia đình hạnh phúc.</p>
+      </div>
+    </div>
+    <div class="pains-gains">
+      <div class="pg-card">
+        <h3>😰 Pains (Nỗi sợ)</h3>
+        <ul>
+          <li>Sợ vay nợ quá nhiều, không trả được</li>
+          <li>Sợ nhà kém chất lượng, xây xong hỏng</li>
+          <li>Sợ bị lừa đảo bởi thầu xấu</li>
+          <li>Sợ không đủ tiền cho con học đại học</li>
+        </ul>
+      </div>
+      <div class="pg-card">
+        <h3>🎉 Gains (Lợi ích)</h3>
+        <ul>
+          <li>Tự hào khi con nói "Cảm ơn ba, con có phòng riêng rồi"</li>
+          <li>Yên tâm khi nhà có diện tích đủ cho cả nhà</li>
+          <li>Hạnh phúc khi gia đình có không gian riêng</li>
+          <li>Vui khi mời được khách đến chơi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-footer">
+      <a href="skill-3-user-story.html" class="nav-btn"><span>← Back to</span><strong>Skill #3: User Story</strong></a>
+      <a href="skill-5-press-release.html" class="nav-btn"><span>Next →</span><strong>Skill #5: Press Release</strong></a>
+    </div>
+  </div>
+</body>
+</html>

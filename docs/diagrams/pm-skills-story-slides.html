@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PM Skills Story — Slide Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Warm Terracotta Theme */
+      --terracotta: #c45a3b;
+      --terracotta-dark: #9e4a2f;
+      --terracotta-light: #f5e6e1;
+      --clay: #8b5e3c;
+      --gold: #b8954a;
+      --gold-light: #faf3e3;
+      --sage: #6b8e7a;
+      --sage-light: #e8f0ed;
+      --purple: #7a6b9a;
+      --purple-light: #f0edf5;
+
+      --bg: #fdfcfa;
+      --surface: #ffffff;
+      --text: #1a1512;
+      --text-dim: #6b5a4f;
+      --border: rgba(80, 55, 40, 0.12);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0d0c;
+        --surface: #1a1614;
+        --text: #f5f0ec;
+        --text-dim: #9a8a7c;
+        --border: rgba(255, 255, 255, 0.08);
+        --terracotta-light: rgba(196, 90, 59, 0.15);
+        --gold-light: rgba(184, 149, 74, 0.1);
+        --sage-light: rgba(107, 142, 122, 0.15);
+        --purple-light: rgba(122, 107, 154, 0.12);
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .slides-container {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 60px 80px;
+      display: none;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide.prev {
+      transform: translateX(-30px);
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dot.active {
+      background: var(--terracotta);
+      transform: scale(1.2);
+    }
+
+    .nav-arrows {
+      position: fixed;
+      bottom: 32px;
+      right: 40px;
+      display: flex;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    .nav-arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-arrow:hover {
+      background: var(--terracotta);
+      color: white;
+      border-color: var(--terracotta);
+    }
+
+    .slide-counter {
+      position: fixed;
+      bottom: 40px;
+      left: 40px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+      z-index: 100;
+    }
+
+    /* ============ SLIDE 1: Title ============ */
+    .slide-title {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 20% 80%, var(--terracotta-light) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, var(--gold-light) 0%, transparent 40%),
+        var(--bg);
+    }
+
+    .slide-title .kicker {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--terracotta);
+      margin-bottom: 20px;
+    }
+
+    .slide-title h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 8vw, 84px);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .slide-title .subtitle {
+      font-size: 22px;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin-bottom: 32px;
+    }
+
+    .slide-title .story-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      padding: 16px 28px;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      font-size: 15px;
+    }
+
+    .slide-title .story-badge span {
+      font-weight: 600;
+      color: var(--terracotta);
+    }
+
+    /* ============ SLIDE 2: Story Setup ============ */
+    .slide-setup {
+      justify-content: center;
+      background: var(--bg);
+    }
+
+    .slide-setup .content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .slide-setup h2 {
+      font-family: var(--font-display);
+      font-size: 42px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .story-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .story-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .story-card__icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .story-card__title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .story-card__desc {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* ============ SLIDE 3: Overview Grid ============ */
+    .slide-overview {
+      padding: 40px 60px;
+    }
+
+    .slide-overview h2 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      flex: 1;
+    }
+
+    .level-col {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-top: 4px solid;
+    }
+
+    .level-col:nth-child(1) { border-color: var(--terracotta); }
+    .level-col:nth-child(2) { border-color: var(--clay); }
+    .level-col:nth-child(3) { border-color: var(--gold); }
+    .level-col:nth-child(4) { border-color: var(--sage); }
+    .level-col:nth-child(5) { border-color: var(--purple); }
+
+    .level-col__header {
+      text-align: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .level-col__icon {
+      font-size: 28px;
+    }
+
+    .level-col__title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .level-col:nth-child(1) .level-col__title { color: var(--terracotta); }
+    .level-col:nth-child(2) .level-col__title { color: var(--clay); }
+    .level-col:nth-child(3) .level-col__title { color: var(--gold); }
+    .level-col:nth-child(4) .level-col__title { color: var(--sage); }
+    .level-col:nth-child(5) .level-col__title { color: var(--purple); }
+
+    .level-col__phrase {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .level-col__skills {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .level-skill {
+      font-size: 11px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+
+    .level-col__footer {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-align: center;
+      padding-top: 12px;
+      margin-top: auto;
+    }
+
+    /* ============ SLIDE 4: Memory Aids ============ */
+    .slide-memory {
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at 50% 50%, var(--gold-light) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    .slide-memory h2 {
+      font-family: var(--font-display);
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .memory-cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .memory-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .memory-card__level {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .memory-card__phrase {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .memory-card__meaning {
+      font-size: 12px;
+      color: var(--text-dim);
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ============ SLIDE 5: Summary ============ */
+    .slide-summary {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .slide-summary h2 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      margin-bottom: 40px;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .stat-box {
+      text-align: center;
+    }
+
+    .stat-box__number {
+      font-family: var(--font-display);
+      font-size: 72px;
+      color: var(--terracotta);
+      line-height: 1;
+    }
+
+    .stat-box__label {
+      font-size: 16px;
+      color: var(--text-dim);
+      margin-top: 8px;
+    }
+
+    .final-cta {
+      background: var(--surface);
+      padding: 24px 48px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      display: inline-block;
+    }
+
+    .final-cta__text {
+      font-size: 18px;
+    }
+
+    .final-cta__highlight {
+      color: var(--terracotta);
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .levels-grid,
+      .memory-cards,
+      .story-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-row { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      .slide { padding: 32px 24px; }
+      .levels-grid,
+      .memory-cards,
+      .story-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-container">
+
+    <!-- SLIDE 1: Title -->
+    <section class="slide slide-title active" data-slide="1">
+      <div class="kicker">5 Levels • 42 Skills • 1 Story</div>
+      <h1>PM Skills Story</h1>
+      <p class="subtitle">Một câu chuyện duy nhất giúp bạn nhớ 42 kỹ năng Product Management</p>
+      <div class="story-badge">
+        🏠 20m² → 🤖🚀 HomeCompact
+      </div>
+    </section>
+
+    <!-- SLIDE 2: Story Setup -->
+    <section class="slide slide-setup" data-slide="2">
+      <div class="content">
+        <h2>Câu chuyện xây nhà</h2>
+        <div class="story-cards">
+          <div class="story-card">
+            <div class="story-card__icon">👨‍💼</div>
+            <div class="story-card__title">Anh Minh</div>
+            <div class="story-card__desc">Nhân viên văn phòng, 35 tuổi, thu nhập 15tr/tháng. Sống với vợ và 2 con trong căn phòng 20m².</div>
+          </div>
+          <div class="story-card">
+            <div class="story-card__icon">🏠</div>
+            <div class="story-card__title">Căn phòng 20m²</div>
+            <div class="story-card__desc">5 người sống chung. Con không có chỗ học, vợ chồng mất ngủ vì quá chật.</div>
+          </div>
+          <div class="story-card">
+            <div class="story-card__icon">🤖🚀</div>
+            <div class="story-card__title">HomeCompact</div>
+            <div class="story-card__desc">Công ty nhà modular AI được xây dựng từ nhu cầu thực của anh Minh.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: Overview Grid -->
+    <section class="slide slide-overview" data-slide="3">
+      <h2>42 Skills qua 5 Levels</h2>
+      <div class="levels-grid">
+        <div class="level-col">
+          <div class="level-col__header">
+            <div class="level-col__icon">🏠</div>
+            <div class="level-col__title">Foundation</div>
+            <div class="level-col__phrase">Đ.P.C.V.T</div>
+          </div>
+          <div class="level-col__skills">
+            <div class="level-skill">01 Problem Statement</div>
+            <div class="level-skill">02 Proto-Persona</div>
+            <div class="level-skill">03 User Story</div>
+            <div class="level-skill">04 Jobs-to-be-Done</div>
+            <div class="level-skill">05 Press Release</div>
+          </div>
+          <div class="level-col__footer">5 Skills</div>
+        </div>
+
+        <div class="level-col">
+          <div class="level-col__header">
+            <div class="level-col__icon">🔍</div>
+            <div class="level-col__title">Discovery</div>
+            <div class="level-col__phrase">Phỏng-Ngày-Việc...</div>
+          </div>
+          <div class="level-col__skills">
+            <div class="level-skill">06 Discovery Interview</div>
+            <div class="level-skill">07 Customer Journey Map</div>
+            <div class="level-skill">08 User Story Mapping</div>
+            <div class="level-skill">09 Company Research</div>
+            <div class="level-skill">10 TAM-SAM-SOM</div>
+            <div class="level-skill">11 PESTEL Analysis</div>
+          </div>
+          <div class="level-col__footer">6 Skills</div>
+        </div>
+
+        <div class="level-col">
+          <div class="level-col__header">
+            <div class="level-col__icon">📐</div>
+            <div class="level-col__title">Strategy</div>
+            <div class="level-col__phrase">Khác-Cây-Nếu...</div>
+          </div>
+          <div class="level-col__skills">
+            <div class="level-skill">12 Positioning</div>
+            <div class="level-skill">13 OST</div>
+            <div class="level-skill">14 Epic Hypothesis</div>
+            <div class="level-skill">15 PRD</div>
+            <div class="level-skill">16 Roadmap</div>
+            <div class="level-skill">17 Prioritization</div>
+            <div class="level-skill">18 Strategy Session</div>
+          </div>
+          <div class="level-col__footer">7 Skills</div>
+        </div>
+
+        <div class="level-col">
+          <div class="level-col__header">
+            <div class="level-col__icon">💰</div>
+            <div class="level-col__title">Finance</div>
+            <div class="level-col__phrase">Thu-Chi-Bảng...</div>
+          </div>
+          <div class="level-col__skills">
+            <div class="level-skill">19 Revenue Metrics</div>
+            <div class="level-skill">20 SaaS Economics</div>
+            <div class="level-skill">21 Finance Quickref</div>
+            <div class="level-skill">22 Feature Investment</div>
+            <div class="level-skill">23 Channel Advisor</div>
+            <div class="level-skill">24 Pricing</div>
+            <div class="level-skill">25 Health Diagnostic</div>
+          </div>
+          <div class="level-col__footer">7 Skills</div>
+        </div>
+
+        <div class="level-col">
+          <div class="level-col__header">
+            <div class="level-col__icon">🤖</div>
+            <div class="level-col__title">Advanced</div>
+            <div class="level-col__phrase">Sẵn-Ngữ-Thử...</div>
+          </div>
+          <div class="level-col__skills">
+            <div class="level-skill">26 AI Readiness</div>
+            <div class="level-skill">27 Context Eng.</div>
+            <div class="level-skill">28 PoL Probe</div>
+            <div class="level-skill">29 Probe Advisor</div>
+            <div class="level-skill">30 Rec. Canvas</div>
+            <div class="level-skill">31 Epic Breakdown</div>
+            <div class="level-skill">32 Storyboard</div>
+            <div class="level-skill">33 Lean UX</div>
+            <div class="level-skill">34 Problem Frame</div>
+            <div class="level-skill">35 Positioning WS</div>
+            <div class="level-skill">36 EOL Message</div>
+          </div>
+          <div class="level-col__footer">+6 = 42</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: Memory Aids -->
+    <section class="slide slide-memory" data-slide="4">
+      <h2>Câu ghi nhớ</h2>
+      <div class="memory-cards">
+        <div class="memory-card">
+          <div class="memory-card__level">🏠</div>
+          <div class="memory-card__phrase">Đau<br>Phác<br>Chi<br>Vì<br>Tưởng</div>
+          <div class="memory-card__meaning">Foundation</div>
+        </div>
+        <div class="memory-card">
+          <div class="memory-card__level">🔍</div>
+          <div class="memory-card__phrase">Phỏng<br>Ngày<br>Việc<br>Đối<br>Thị<br>Trời</div>
+          <div class="memory-card__meaning">Discovery</div>
+        </div>
+        <div class="memory-card">
+          <div class="memory-card__level">📐</div>
+          <div class="memory-card__phrase">Khác<br>Cây<br>Nếu<br>Vẽ<br>Lộ<br>Xếp<br>Họp</div>
+          <div class="memory-card__meaning">Strategy</div>
+        </div>
+        <div class="memory-card">
+          <div class="memory-card__level">💰</div>
+          <div class="memory-card__phrase">Thu<br>Chi<br>Bảng<br>Đầu<br>Kiếm<br>Giá<br>Khám</div>
+          <div class="memory-card__meaning">Finance</div>
+        </div>
+        <div class="memory-card">
+          <div class="memory-card__level">🤖</div>
+          <div class="memory-card__phrase">Sẵn<br>Ngữ<br>Thử<br>Chọn<br>Đánh</div>
+          <div class="memory-card__meaning">AI Skills</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Summary -->
+    <section class="slide slide-summary" data-slide="5">
+      <h2>Tổng kết</h2>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-box__number">5</div>
+          <div class="stat-box__label">Chương / Levels</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__number">42</div>
+          <div class="stat-box__label">Kỹ năng / Skills</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__number">1</div>
+          <div class="stat-box__label">Câu chuyện / Story</div>
+        </div>
+      </div>
+      <div class="final-cta">
+        <div class="final-cta__text">
+          🏠 <span class="final-cta__highlight">20m²</span> → 🤖🚀 <span class="final-cta__highlight">HomeCompact</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Navigation -->
+  <div class="slide-counter"><span id="current">1</span> / <span id="total">5</span></div>
+  <div class="nav" id="nav"></div>
+  <div class="nav-arrows">
+    <div class="nav-arrow" id="prev">←</div>
+    <div class="nav-arrow" id="next">→</div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+
+    // Create nav dots
+    const nav = document.getElementById('nav');
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goToSlide(i));
+      nav.appendChild(dot);
+    }
+
+    document.getElementById('total').textContent = totalSlides;
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev');
+        if (index === currentSlide) {
+          slide.classList.add('active');
+        } else if (index < currentSlide) {
+          slide.classList.add('prev');
+        }
+      });
+
+      // Update nav dots
+      document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+
+      // Update counter
+      document.getElementById('current').textContent = currentSlide + 1;
+    }
+
+    function goToSlide(index) {
+      currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+      updateSlide();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    // Event listeners
+    document.getElementById('next').addEventListener('click', nextSlide);
+    document.getElementById('prev').addEventListener('click', prevSlide);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+
+    // Touch support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    document.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>

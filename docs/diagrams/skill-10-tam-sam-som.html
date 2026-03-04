@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #10: TAM-SAM-SOM — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --purple: #7a6b9a; --purple-light: #e8e4f0; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --purple: #9a8ab0; --purple-light: rgba(154,138,176,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--purple-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--purple); }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--purple); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+    .insight { background: var(--surface); border-left: 4px solid var(--purple); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+    .tam-visual { display: flex; justify-content: center; align-items: center; gap: 0; margin-bottom: 32px; flex-wrap: wrap; }
+    .tam-circle { border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; }
+    .tam-circle.tam { width: 280px; height: 280px; background: rgba(122, 107, 154, 0.25); border: 3px solid var(--purple); }
+    .tam-circle.sam { width: 200px; height: 200px; background: rgba(122, 107, 154, 0.5); border: 3px solid var(--purple); margin: -40px; position: relative; z-index: 1; }
+    .tam-circle.som { width: 100px; height: 100px; background: var(--purple); margin: -30px; position: relative; z-index: 2; }
+    .tam-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; margin-bottom: 4px; }
+    .tam-value { font-family: var(--font-display); font-size: 24px; }
+    .tam-desc { font-size: 12px; opacity: 0.9; max-width: 180px; }
+    .calc-box { background: var(--surface); border-radius: 14px; padding: 24px; text-align: center; }
+    .calc-box h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; }
+    .calc-result { font-family: var(--font-display); font-size: 28px; color: var(--purple); }
+    .principles { background: var(--surface); border-radius: 14px; padding: 24px; margin-top: 24px; }
+    .principles h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; }
+    .principles ul { list-style: none; }
+    .principles li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; display: flex; gap: 10px; }
+    .principles li:last-child { border: none; }
+    .principles li::before { content: '→'; color: var(--purple); }
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-2-discovery.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 2 → Skill #10</div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Skill #10 | Level 2: Discovery</div>
+      <h1 class="hero__title">TAM-SAM-SOM</h1>
+      <p class="hero__subtitle">"THỊ TRƯỜNG lớn cỡ nào?" — Đo lường cơ hội thị trường</p>
+    </div>
+    <div class="insight"><p class="insight__text">"TAM là đại dương, SAM là vùng biển mình bơi được, SOM là con cá mình thực sự bắt được."</p></div>
+    <div class="tam-visual">
+      <div class="tam-circle tam"><div class="tam-label">TAM</div><div class="tam-value">5 triệu</div><div class="tam-desc">Tổng thị trường<br>(tất cả gia đình)</div></div>
+      <div class="tam-circle sam"><div class="tam-label">SAM</div><div class="tam-value">800,000</div><div class="tam-desc">Thu nhập 10-20tr<br>Nhà &lt;30m²</div></div>
+      <div class="tam-circle som"><div class="tam-label">SOM</div><div class="tam-value">5,000</div><div class="tam-desc">Hà Nội<br>Năm 1</div></div>
+    </div>
+    <div class="calc-box">
+      <h3>💰 Tính toán cơ hội</h3>
+      <p>SOM × Giá trung bình = Doanh thu tiềm năng</p>
+      <p class="calc-result">5,000 × 500tr = 2,500 tỷ VNĐ</p>
+      <p style="margin-top: 12px; font-size: 14px; color: var(--text-dim);">Tiềm năng doanh thu năm đầu tiên</p>
+    </div>
+    <div class="principles">
+      <h3>Định nghĩa</h3>
+      <ul>
+        <li><strong>TAM</strong> — Total Addressable Market: Toàn bộ thị trường nếu 100% adopt</li>
+        <li><strong>SAM</strong> — Serviceable Addressable Market: Thị trường mục tiêu bạn có thể phục vụ</li>
+        <li><strong>SOM</strong> — Serviceable Obtainable Market: Thị trường thực tế có thể chiếm được</li>
+      </ul>
+    </div>
+    <div class="nav-footer">
+      <a href="skill-9-company-research.html" class="nav-btn"><span>← Back to</span><strong>Skill #9: Company Research</strong></a>
+      <a href="skill-11-pestel.html" class="nav-btn"><span>Next →</span><strong>Skill #11: PESTEL</strong></a>
+    </div>
+  </div>
+</body>
+</html>

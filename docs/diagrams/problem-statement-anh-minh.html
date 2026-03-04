@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem Statement — Câu Chuyện Anh Minh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Warm terracotta + clay palette */
+      --bg: #faf7f2;
+      --surface: #ffffff;
+      --surface-warm: #f5efe6;
+      --border: rgba(80, 55, 40, 0.12);
+      --border-bright: rgba(80, 55, 40, 0.25);
+      --text: #2d1f14;
+      --text-dim: #6b5a4f;
+      --accent: #c45a3b;
+      --accent-dim: rgba(196, 90, 59, 0.1);
+      --terracotta: #c45a3b;
+      --terracotta-light: #e8d5cd;
+      --clay: #8b5e3c;
+      --clay-dim: rgba(139, 94, 60, 0.1);
+      --cream: #f5efe6;
+      --gold: #b8954a;
+      --gold-dim: rgba(184, 149, 74, 0.12);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1512;
+        --surface: #252019;
+        --surface-warm: #2d241c;
+        --border: rgba(255, 255, 255, 0.06);
+        --border-bright: rgba(255, 255, 255, 0.15);
+        --text: #f0e6dc;
+        --text-dim: #9a8a7c;
+        --accent: #e07850;
+        --accent-dim: rgba(224, 120, 80, 0.12);
+        --terracotta: #e07850;
+        --terracotta-light: rgba(224, 120, 80, 0.15);
+        --clay: #c4906a;
+        --clay-dim: rgba(196, 144, 106, 0.12);
+        --cream: #2d241c;
+        --gold: #d4b06a;
+        --gold-dim: rgba(212, 176, 106, 0.1);
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse at 0% 0%, var(--terracotta-light) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, var(--gold-dim) 0%, transparent 40%);
+      color: var(--text);
+      font-family: var(--font-body);
+      padding: 40px;
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .fade-in { animation: fadeUp 0.6s ease-out both; }
+    .slide-in { animation: slideIn 0.5s ease-out both; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 32px 0;
+    }
+
+    .hero__kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--terracotta);
+      margin-bottom: 12px;
+      animation: fadeUp 0.5s ease-out;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 7vw, 64px);
+      color: var(--text);
+      margin-bottom: 8px;
+      animation: fadeUp 0.5s ease-out 0.1s both;
+    }
+
+    .hero__subtitle {
+      font-size: 20px;
+      color: var(--text-dim);
+      font-style: italic;
+      max-width: 640px;
+      margin: 0 auto;
+      animation: fadeUp 0.5s ease-out 0.2s both;
+    }
+
+    /* Quote Box */
+    .quote-box {
+      background: var(--surface);
+      border-left: 4px solid var(--terracotta);
+      padding: 32px 40px;
+      margin-bottom: 48px;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      animation: fadeUp 0.6s ease-out 0.3s both;
+    }
+
+    .quote-box p {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .quote-box__attribution {
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* Core Insight */
+    .insight {
+      text-align: center;
+      padding: 24px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s ease-out 0.4s both;
+    }
+
+    .insight__icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .insight__text {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--clay);
+    }
+
+    /* The 4 Elements Grid */
+    .elements-section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+
+    .elements-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .elements-grid { grid-template-columns: 1fr; }
+    }
+
+    .element-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .element-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    .element-card:nth-child(1) { animation: fadeUp 0.5s ease-out 0.5s both; }
+    .element-card:nth-child(2) { animation: fadeUp 0.5s ease-out 0.6s both; }
+    .element-card:nth-child(3) { animation: fadeUp 0.5s ease-out 0.7s both; }
+    .element-card:nth-child(4) { animation: fadeUp 0.5s ease-out 0.8s both; }
+
+    .element-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--terracotta);
+    }
+
+    .element-card:nth-child(2)::before { background: var(--clay); }
+    .element-card:nth-child(3)::before { background: var(--gold); }
+    .element-card:nth-child(4)::before { background: #6b8e7a; }
+
+    .element-card__label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+    }
+
+    .element-card:nth-child(2) .element-card__label { color: var(--clay); }
+    .element-card:nth-child(3) .element-card__label { color: var(--gold); }
+    .element-card:nth-child(4) .element-card__label { color: #6b8e7a; }
+
+    .element-card__question {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .element-card__answer {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .element-card__answer strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Visual Room Representation */
+    .room-viz {
+      background: var(--surface-warm);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.6s ease-out 0.9s both;
+    }
+
+    .room-viz__title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .room-floorplan {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .room-box {
+      width: 200px;
+      height: 160px;
+      border: 3px solid var(--terracotta);
+      border-radius: 8px;
+      position: relative;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .room-box__label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--terracotta);
+      font-weight: 600;
+    }
+
+    .room-box__size {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--text);
+    }
+
+    .room-box__detail {
+      font-size: 13px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    .family-icons {
+      display: flex;
+      gap: 8px;
+      position: absolute;
+      bottom: 20px;
+    }
+
+    .family-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--clay);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+    }
+
+    .arrow-right {
+      font-size: 32px;
+      color: var(--gold);
+    }
+
+    /* Problem Breakdown */
+    .problem-breakdown {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 700px) {
+      .problem-breakdown { grid-template-columns: 1fr; }
+    }
+
+    .problem-item {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+      animation: fadeUp 0.5s ease-out calc(1s + var(--i, 0) * 0.1s) both;
+    }
+
+    .problem-item__icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .problem-item__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .problem-item__desc {
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    /* Key Principle Box */
+    .principle-box {
+      background: linear-gradient(135deg, var(--terracotta-light) 0%, var(--gold-dim) 100%);
+      border-radius: 16px;
+      padding: 36px 40px;
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fadeUp 0.6s ease-out 1.3s both;
+    }
+
+    .principle-box__text {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--text);
+    }
+
+    .principle-box__sub {
+      margin-top: 12px;
+      font-size: 15px;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 32px;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+
+    .footer__text {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero__kicker">Bước 1: Nền Tảng</div>
+      <h1 class="hero__title">Problem Statement</h1>
+      <p class="hero__subtitle">Câu chuyện xây nhà cho gia đình anh Minh — từ căn phòng 20m² đến HomeCompact</p>
+    </header>
+
+    <!-- Quote -->
+    <blockquote class="quote-box">
+      <p>"Gia đình tôi 5 người sống trong căn phòng 20m². Con tôi không có chỗ học bài, vợ chồng tôi mất ngủ vì quá chật. Tôi cảm thấy mình là một người cha tệ."</p>
+      <div class="quote-box__attribution">— Anh Minh, 35 tuổi, nhân viên văn phòng</div>
+    </blockquote>
+
+    <!-- Core Insight -->
+    <div class="insight">
+      <div class="insight__icon">💡</div>
+      <p class="insight__text">Chưa hiểu NỖI ĐAU thì chưa nên vẽ bản thiết kế.</p>
+    </div>
+
+    <!-- Room Visualization -->
+    <section class="room-viz">
+      <h2 class="room-viz__title">🏠 Hiện trạng: Căn phòng 20m²</h2>
+      <div class="room-floorplan">
+        <div class="room-box">
+          <span class="room-box__label">TRƯỚC</span>
+          <span class="room-box__size">20m²</span>
+          <span class="room-box__detail">5 người<br>1 phòng</span>
+          <div class="family-icons">
+            <div class="family-icon">👨</div>
+            <div class="family-icon">👩</div>
+            <div class="family-icon">👦</div>
+            <div class="family-icon">👧</div>
+            <div class="family-icon">👶</div>
+          </div>
+        </div>
+        <span class="arrow-right">→</span>
+        <div class="room-box" style="border-color: var(--gold);">
+          <span class="room-box__label" style="color: var(--gold);">SAU</span>
+          <span class="room-box__size">45m²</span>
+          <span class="room-box__detail">3 phòng ngủ<br>Modular</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- The 4 Key Elements -->
+    <section class="elements-section">
+      <h2 class="section-title">4 Yếu Tố Cần Nắm Bắt</h2>
+      <div class="elements-grid">
+        <article class="element-card">
+          <div class="element-card__label">Ai?</div>
+          <h3 class="element-card__question">Đang gặp vấn đề?</h3>
+          <p class="element-card__answer">
+            <strong>Anh Minh</strong> và gia đình 5 người (vợ + 2 con + 1 người già).<br><br>
+            Anh 35 tuổi, nhân viên văn phòng, thu nhập 15 triệu/tháng.
+          </p>
+        </article>
+
+        <article class="element-card">
+          <div class="element-card__label">Vấn đề gì?</div>
+          <h3 class="element-card__question">Cần giải quyết?</h3>
+          <p class="element-card__answer">
+            <strong>Nhà quá chật, không có không gian riêng.</strong><br><br>
+            • Con không có chỗ học bài<br>
+            • Vợ chồng mất ngủ vì ồn<br>
+            • Không có phòng riêng cho bất kỳ ai
+          </p>
+        </article>
+
+        <article class="element-card">
+          <div class="element-card__label">Tại sao?</div>
+          <h3 class="element-card__question">Quan trọng?</h3>
+          <p class="element-card__answer">
+            <strong>Ảnh hưởng sức khỏe và tương lai con.</strong><br><br>
+            • Con học kém vì không có chỗ tập trung<br>
+            • Sức khỏe giảm vì thiếu ngủ<br>
+            • Áp lực tài chính khi vay nợ
+          </p>
+        </article>
+
+        <article class="element-card">
+          <div class="element-card__label">Cảm xúc</div>
+          <h3 class="element-card__question">Như thế nào?</h3>
+          <p class="element-card__answer">
+            <strong>Cảm thấy bất lực và tội lỗi.</strong><br><br>
+            "Tôi cảm thấy <strong>mình là một người cha tệ</strong>" — đây là nỗi đau sâu nhất, không chỉ là vấn đề vật lý.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Problem Breakdown -->
+    <section class="problem-breakdown">
+      <div class="problem-item" style="--i: 0">
+        <div class="problem-item__icon">👶</div>
+        <h4 class="problem-item__title">Con không có chỗ học</h4>
+        <p class="problem-item__desc">Học trên bàn ăn, bị TV làm mất tập trung, điểm số giảm</p>
+      </div>
+      <div class="problem-item" style="--i: 1">
+        <div class="problem-item__icon">😴</div>
+        <h4 class="problem-item__title">Mất ngủ vì quá chật</h4>
+        <p class="problem-item__desc">5 người ngủ chung 1 phòng, trẻ quấy khóc, người lớn không ngủ được</p>
+      </div>
+      <div class="problem-item" style="--i: 2">
+        <div class="problem-item__icon">😔</div>
+        <h4 class="problem-item__title">Cảm thấy tội lỗi</h4>
+        <p class="problem-item__desc">Anh Minh cảm thấy mình là người cha tệ, không cho gia đình cuộc sống tốt hơn</p>
+      </div>
+    </section>
+
+    <!-- Key Principle -->
+    <div class="principle-box">
+      <p class="principle-box__text">"Chưa hiểu NỖI ĐAU thì chưa nên vẽ bản thiết kế."</p>
+      <p class="principle-box__sub">Đây là nguyên tắc vàng của Product Management</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer__text">PM Skills Story — Level 1: Foundation | Skill #1</p>
+    </footer>
+  </div>
+</body>
+</html>

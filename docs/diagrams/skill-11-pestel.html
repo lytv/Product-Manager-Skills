@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #11: PESTEL Analysis — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --clay: #8b5e3c; --clay-light: #e8ddd4; --sage: #6b8e7a; --gold: #b8954a; --terracotta: #c45a3b; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --clay: #c4906a; --clay-light: rgba(196,144,106,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 100% 100%, var(--clay-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--clay); }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--clay); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+    .insight { background: var(--surface); border-left: 4px solid var(--clay); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+    .pestel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
+    @media (max-width: 700px) { .pestel-grid { grid-template-columns: repeat(2, 1fr); } }
+    .pestel-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; border-top: 4px solid var(--clay); }
+    .pestel-card:nth-child(2) { border-top-color: var(--sage); }
+    .pestel-card:nth-child(3) { border-top-color: var(--gold); }
+    .pestel-card:nth-child(4) { border-top-color: var(--terracotta); }
+    .pestel-card:nth-child(5) { border-top-color: #7a6b9a; }
+    .pestel-card:nth-child(6) { border-top-color: #5a7a8a; }
+    .pestel-card__letter { font-family: var(--font-display); font-size: 28px; color: var(--clay); margin-bottom: 4px; }
+    .pestel-card:nth-child(2) .pestel-card__letter { color: var(--sage); }
+    .pestel-card:nth-child(3) .pestel-card__letter { color: var(--gold); }
+    .pestel-card:nth-child(4) .pestel-card__letter { color: var(--terracotta); }
+    .pestel-card:nth-child(5) .pestel-card__letter { color: #7a6b9a; }
+    .pestel-card:nth-child(6) .pestel-card__letter { color: #5a7a8a; }
+    .pestel-card__name { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 10px; }
+    .pestel-card__impact { font-size: 13px; margin-bottom: 8px; }
+    .pestel-card__signal { font-size: 12px; display: flex; align-items: center; gap: 6px; }
+    .signal-good { color: var(--sage); }
+    .signal-bad { color: var(--terracotta); }
+    .signal-warn { color: var(--gold); }
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-2-discovery.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 2 → Skill #11</div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Skill #11 | Level 2: Discovery</div>
+      <h1 class="hero__title">PESTEL Analysis</h1>
+      <p class="hero__subtitle">"Xem TRỜI ĐẤT có thuận không" — Phân tích yếu tố vĩ mô</p>
+    </div>
+    <div class="insight"><p class="insight__text">"Xây nhà giỏi mấy mà gặp bão cũng sập. Phải xem TRỜI trước."</p></div>
+    <div class="pestel-grid">
+      <div class="pestel-card">
+        <div class="pestel-card__letter">P</div>
+        <div class="pestel-card__name">Political</div>
+        <div class="pestel-card__impact">Chương trình nhà ở xã hội</div>
+        <div class="pestel-card__signal"><span class="signal-good">🟢 Thuận</span></div>
+      </div>
+      <div class="pestel-card">
+        <div class="pestel-card__letter">E</div>
+        <div class="pestel-card__name">Economic</div>
+        <div class="pestel-card__impact">Lãi suất giảm, tín dụng nhà ở tăng</div>
+        <div class="pestel-card__signal"><span class="signal-good">🟢 Thuận</span></div>
+      </div>
+      <div class="pestel-card">
+        <div class="pestel-card__letter">S</div>
+        <div class="pestel-card__name">Social</div>
+        <div class="pestel-card__impact">Xu hướng sống tối giản, nhỏ gọn</div>
+        <div class="pestel-card__signal"><span class="signal-good">🟢 Thuận</span></div>
+      </div>
+      <div class="pestel-card">
+        <div class="pestel-card__letter">T</div>
+        <div class="pestel-card__name">Technological</div>
+        <div class="pestel-card__impact">Công nghệ modular, prefab phát triển</div>
+        <div class="pestel-card__signal"><span class="signal-good">🟢 Thuận</span></div>
+      </div>
+      <div class="pestel-card">
+        <div class="pestel-card__letter">E</div>
+        <div class="pestel-card__name">Environmental</div>
+        <div class="pestel-card__impact">Yêu cầu vật liệu xanh, bền vững</div>
+        <div class="pestel-card__signal"><span class="signal-warn">🟡 Cân nhắc</span></div>
+      </div>
+      <div class="pestel-card">
+        <div class="pestel-card__letter">L</div>
+        <div class="pestel-card__name">Legal</div>
+        <div class="pestel-card__impact">Luật đất đai, quy hoạch siết chặt</div>
+        <div class="pestel-card__signal"><span class="signal-bad">🔴 Rủi ro</span></div>
+      </div>
+    </div>
+    <div class="nav-footer">
+      <a href="skill-10-tam-sam-som.html" class="nav-btn"><span>← Back to</span><strong>Skill #10: TAM-SAM-SOM</strong></a>
+      <a href="chapter-3-strategy.html" class="nav-btn"><span>Next →</span><strong>Chương 3: Strategy</strong></a>
+    </div>
+  </div>
+</body>
+</html>

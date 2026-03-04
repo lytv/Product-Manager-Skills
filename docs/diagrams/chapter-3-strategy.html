@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chương 3: Strategy — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --gold: #b8954a; --gold-light: #f5ecd5; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; --terracotta: #c45a3b; --sage: #6b8e7a; --clay: #8b5e3c; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --gold: #d4b06a; --gold-light: rgba(212,176,106,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--gold-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__title { font-family: var(--font-display); font-size: 14px; color: var(--text-dim); }
+    .header__chapter { font-family: var(--font-display); font-size: 28px; }
+    .hero { text-align: center; padding: 24px 0 32px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(32px, 6vw, 48px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 16px; margin-bottom: 12px; }
+    .hero__phrase { font-family: var(--font-mono); font-size: 14px; color: var(--gold); background: var(--surface); padding: 12px 20px; border-radius: 8px; display: inline-block; }
+    .skills-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+    .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; }
+    .skill-card:hover { transform: translateY(-2px); }
+    .skill-card__num { font-family: var(--font-display); font-size: 28px; color: var(--gold); }
+    .skill-card:nth-child(2) .skill-card__num { color: var(--sage); }
+    .skill-card:nth-child(3) .skill-card__num { color: var(--terracotta); }
+    .skill-card:nth-child(4) .skill-card__num { color: var(--clay); }
+    .skill-card:nth-child(5) .skill-card__num { color: var(--gold); }
+    .skill-card:nth-child(6) .skill-card__num { color: #7a6b9a; }
+    .skill-card:nth-child(7) .skill-card__num { color: var(--sage); }
+    .skill-card__content h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 4px; }
+    .skill-card__content p { font-size: 13px; color: var(--text-dim); }
+    .skill-card__arrow { font-size: 18px; color: var(--text-dim); }
+    .memory-box { background: var(--surface); border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+    .memory-box h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; text-align: center; }
+    .memory-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .memory-item { background: var(--bg); padding: 12px 8px; border-radius: 8px; text-align: center; font-size: 11px; }
+    .memory-item span { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--gold); margin-bottom: 4px; }
+    .footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 18px; }
+    @media (max-width: 600px) { .skill-card { grid-template-columns: 1fr; text-align: center; } .skill-card__arrow { display: none; } .memory-grid { grid-template-columns: repeat(4, 1fr); } .footer-nav { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="pm-skills-story-index.html" class="header__back">←</a>
+      <div><div class="header__title">PM Skills Story</div><div class="header__chapter">Chương 3</div></div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Level 3: Strategy & Planning</div>
+      <h1 class="hero__title">📐 Quay Về Bàn, Vẽ Bản Thiết Kế</h1>
+      <p class="hero__subtitle">7 Skills để tạo chiến lược và kế hoạch xây dựng</p>
+      <div class="hero__phrase">Quy tắc nhớ: Khác — Cây — Nếu — Vẽ — Lộ — Xếp — Họp</div>
+    </div>
+    <div class="skills-list">
+      <a href="skill-12-positioning-statement.html" class="skill-card"><div class="skill-card__num">01</div><div class="skill-card__content"><h3>Positioning Statement</h3><p>"Mình KHÁC GÌ?" — Xác định vị thế cạnh tranh</p></div><div class="skill-card__arrow">→</div></a>
+      <a href="skill-13-opportunity-solution-tree.html" class="skill-card"><div class="skill-card__num">02</div><div class="skill-card__content"><h3>Opportunity Solution Tree</h3><p>"CÂY cơ hội mọc giải pháp" — Từ mục tiêu đến giải pháp</p></div><div class="skill-card__arrow">→</div></a>
+      <a href="skill-14-epic-hypothesis.html" class="skill-card"><div class="skill-card__num">03</div><div class="skill-card__content"><h3>Epic Hypothesis</h3><p>"NẾU xây thì THÌ sao?" — Đóng gói thành giả thuyết kiểm chứng</p></div><div class="skill-card__arrow">→</div></a>
+      <a href="skill-15-prd-development.html" class="skill-card"><div class="skill-card__num">04</div><div class="skill-card__content"><h3>PRD Development</h3><p>"BẢN VẼ kỹ thuật chi tiết" — Tài liệu yêu cầu sản phẩm</p></div><div class="skill-card__arrow">→</div></a>
+      <a href="skill-16-roadmap-planning.html" class="skill-card"><div class="skill-card__num">05</div><div class="skill-card__content"><h3>Roadmap Planning</h3><p>"LỘ TRÌNH xây gì trước?" — Sắp xếp thứ tự ưu tiên</p></div><div class="skill-card__arrow">→</div></a>
+      <a href="skill-17-prioritization-advisor.html" class="skill-card"><div class="skill-card__num">06</div><div class="skill-card__content"><h3>Prioritization Advisor</h3><p>"XẾP ưu tiên bằng cách nào?" — Chọn framework phù hợp</p></div><div class="skill-card__arrow">→</div></a>
+      <a href="skill-18-product-strategy-session.html" class="skill-card"><div class="skill-card__num">07</div><div class="skill-card__content"><h3>Product Strategy Session</h3><p>"HỌP bàn tròn trước khởi công" — Workshop chiến lược team</p></div><div class="skill-card__arrow">→</div></a>
+    </div>
+    <div class="memory-box">
+      <h3>📚 Quy tắc nhớ: Khác — Cây — Nếu — Vẽ — Lộ — Xếp — Họp</h3>
+      <div class="memory-grid">
+        <div class="memory-item"><span>🎯 K</span>HÁC</div>
+        <div class="memory-item"><span>🌳 C</span>ÂY</div>
+        <div class="memory-item"><span>🧪 N</span>ẾU</div>
+        <div class="memory-item"><span>📄 V</span>Ẽ</div>
+        <div class="memory-item"><span>🗓️ L</span>Ộ</div>
+        <div class="memory-item"><span>⚖️ X</span>ẾP</div>
+        <div class="memory-item"><span>🏛️ H</span>ỌP</div>
+      </div>
+    </div>
+    <div class="footer-nav">
+      <a href="chapter-2-discovery.html" class="nav-btn"><span>← Back to</span><strong>Chương 2: Discovery</strong></a>
+      <a href="chapter-4-finance.html" class="nav-btn"><span>Next →</span><strong>Chương 4: Finance</strong></a>
+    </div>
+  </div>
+</body>
+</html>

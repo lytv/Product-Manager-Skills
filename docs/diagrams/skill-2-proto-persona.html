@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #2: Proto-Persona — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --gold: #b8954a;
+      --gold-light: #f5ecd5;
+      --clay: #8b5e3c;
+      --terracotta: #c45a3b;
+      --sage: #6b8e7a;
+      --bg: #faf7f2;
+      --surface: #ffffff;
+      --border: rgba(80, 55, 40, 0.12);
+      --text: #2d1f14;
+      --text-dim: #6b5a4f;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1512;
+        --surface: #252019;
+        --border: rgba(255, 255, 255, 0.06);
+        --text: #f0e6dc;
+        --text-dim: #9a8a7c;
+        --gold: #d4b06a;
+        --gold-light: rgba(212, 176, 106, 0.15);
+        --clay: #c4906a;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 0% 0%, var(--gold-light) 0%, transparent 50%);
+      color: var(--text);
+      font-family: var(--font-body);
+      padding: 32px;
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__back:hover { transform: translateX(-4px); }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--gold); }
+
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+
+    .insight { background: var(--surface); border-left: 4px solid var(--gold); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+
+    .persona-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 32px; }
+    .persona-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .persona-avatar { width: 80px; height: 80px; background: var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+    .persona-name { font-family: var(--font-display); font-size: 28px; }
+    .persona-tagline { color: var(--text-dim); font-size: 14px; }
+
+    .persona-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    @media (max-width: 600px) { .persona-grid { grid-template-columns: 1fr; } }
+
+    .persona-section h4 { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 10px; }
+    .persona-section p { font-size: 15px; color: var(--text); }
+
+    .why-box { background: var(--surface); border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+    .why-box h3 { font-family: var(--font-display); font-size: 20px; margin-bottom: 16px; }
+    .why-box ul { list-style: none; }
+    .why-box li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; display: flex; gap: 12px; }
+    .why-box li:last-child { border: none; }
+    .why-box li::before { content: '→'; color: var(--gold); }
+
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+    @media (max-width: 600px) { .comparison { grid-template-columns: 1fr; } }
+
+    .comp-card { background: var(--surface); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+    .comp-card__label { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .comp-card__good .comp-card__label { color: var(--sage); }
+    .comp-card__bad .comp-card__label { color: var(--terracotta); }
+    .comp-card p { font-size: 14px; color: var(--text-dim); }
+
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-1-foundation.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 1 → Skill #2</div>
+    </header>
+
+    <div class="hero">
+      <div class="hero__kicker">Skill #2 | Level 1: Foundation</div>
+      <h1 class="hero__title">Proto-Persona</h1>
+      <p class="hero__subtitle">"Anh Minh là ai thực sự?" — Bức chân dung sơ bộ dựa trên giả thuyết</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight__text">"Chưa gặp mặt thì vẽ PHÁC THẢO trước — sai thì sửa sau."</p>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-avatar">👨‍💼</div>
+        <div>
+          <div class="persona-name">Anh Minh</div>
+          <div class="persona-tagline">"Tôi muốn cho gia đình một căn nhà thực sự"</div>
+        </div>
+      </div>
+      <div class="persona-grid">
+        <div class="persona-section">
+          <h4>👤 Đặc điểm</h4>
+          <p>35 tuổi, nhân viên văn phòng, thu nhập 15 triệu/tháng. Sống cùng vợ, 2 con (8 và 5 tuổi), và mẹ già. Thích xem video review nhà đất trên YouTube.</p>
+        </div>
+        <div class="persona-section">
+          <h4>🎯 Mục tiêu</h4>
+          <p>Có nhà riêng cho con có phòng học. Không phải nhà sang trọng, chỉ cần đủ chỗ để gia đình sống thoải mái.</p>
+        </div>
+        <div class="persona-section">
+          <h4>😣 Nỗi đau</h4>
+          <p>Chật chội, thiếu riêng tư, áp lực tài chính khi vay ngân hàng. Sợ mua nhà xong mà chất lượng kém.</p>
+        </div>
+        <div class="persona-section">
+          <h4>💬 Hành vi</h4>
+          <p>Hay lên mạng tìm nhà giá rẻ, so sánh giá vật liệu xây dựng, hỏi kinh nghiệm từ đồng nghiệp đã mua nhà.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <h3>Tại sao cần Proto-Persona?</h3>
+      <ul>
+        <li>Chưa có thời gian/budget cho nghiên cứu kỹ → Dùng giả thuyết</li>
+        <li>Giúp team align về "khách hàng là ai" trước khi bắt đầu</li>
+        <li>Dễ dàng validate/sửa sau khi có data thực tế</li>
+        <li>Tránh "build cho mình" — luôn nhớ ai là người ta đang build for</li>
+      </ul>
+    </div>
+
+    <div class="comparison">
+      <div class="comp-card comp-card__good">
+        <div class="comp-card__label">✓ Nên làm</div>
+        <p>Dựa trên giả thuyết có cơ sở (data có sẵn, feedback từ sales, insight từ market)</p>
+      </div>
+      <div class="comp-card comp-card__bad">
+        <div class="comp-card__label">✗ Không nên</div>
+        <p>Bịa đặt hoàn toàn, không có căn cứ, hoặc copy từ đối thủ mà không hiểu tại sao</p>
+      </div>
+    </div>
+
+    <div class="nav-footer">
+      <a href="skill-1-problem-statement.html" class="nav-btn">
+        <span>← Back to</span>
+        <strong>Skill #1: Problem Statement</strong>
+      </a>
+      <a href="skill-3-user-story.html" class="nav-btn">
+        <span>Next →</span>
+        <strong>Skill #3: User Story</strong>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

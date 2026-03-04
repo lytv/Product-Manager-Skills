@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #9: Company Research — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --sage: #6b8e7a; --sage-light: #d8e6de; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; --terracotta: #c45a3b; --gold: #b8954a; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --sage: #8aab9a; --sage-light: rgba(138,171,154,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--sage-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--sage); }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--sage); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+    .insight { background: var(--surface); border-left: 4px solid var(--sage); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+    .comp-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .comp-table th, .comp-table td { padding: 16px; text-align: center; border-bottom: 1px solid var(--border); }
+    .comp-table th { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; background: var(--bg); }
+    .comp-table td { font-size: 14px; }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table .highlight { background: var(--sage-light); font-weight: 600; }
+    .principles { background: var(--surface); border-radius: 14px; padding: 24px; }
+    .principles h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; }
+    .principles ul { list-style: none; }
+    .principles li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; display: flex; gap: 10px; }
+    .principles li:last-child { border: none; }
+    .principles li::before { content: '→'; color: var(--sage); }
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-2-discovery.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 2 → Skill #9</div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Skill #9 | Level 2: Discovery</div>
+      <h1 class="hero__title">Company Research</h1>
+      <p class="hero__subtitle">"Nghiên cứu ĐỐI THỦ" — So sánh với các đối thủ trên thị trường</p>
+    </div>
+    <div class="insight"><p class="insight__text">"Không biết ĐỐI THỦ thì không biết mình khác biệt ở đâu."</p></div>
+    <table class="comp-table">
+      <tr><th></th><th>Nhà thầu A</th><th>Nhà thầu B</th><th>HomeCompact (bạn)</th></tr>
+      <tr><td><strong>Giá</strong></td><td>600tr</td><td>400tr</td><td class="highlight">500tr</td></tr>
+      <tr><td><strong>Thời gian</strong></td><td>6 tháng</td><td>2 tháng</td><td class="highlight">3 tuần (modular!)</td></tr>
+      <tr><td><strong>Điểm mạnh</strong></td><td>Sang trọng</td><td>Rẻ nhất</td><td class="highlight">Nhanh + Tối ưu</td></tr>
+      <tr><td><strong>Điểm yếu</strong></td><td>Đắt</td><td>Chất lượng kém</td><td class="highlight">Mới, chưa uy tín</td></tr>
+    </table>
+    <div class="principles">
+      <h3>Framework phân tích đối thủ</h3>
+      <ul>
+        <li><strong>Direct Competitors</strong> — Bán sản phẩm tương tự cho cùng khách hàng</li>
+        <li><strong>Indirect Competitors</strong> — Giải quyết cùng vấn đề nhưng cách khác</li>
+        <li><strong>Potential Entrants</strong> — Ai có thể gia nhập thị trường?</li>
+        <li><strong>Substitutes</strong> — Khách hàng có thể thay thế bằng giải pháp khác?</li>
+      </ul>
+    </div>
+    <div class="nav-footer">
+      <a href="skill-8-user-story-mapping.html" class="nav-btn"><span>← Back to</span><strong>Skill #8: Story Mapping</strong></a>
+      <a href="skill-10-tam-sam-som.html" class="nav-btn"><span>Next →</span><strong>Skill #10: TAM-SAM-SOM</strong></a>
+    </div>
+  </div>
+</body>
+</html>

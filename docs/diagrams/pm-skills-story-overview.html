@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PM Skills Story — Tổng Quan 5 Level</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --terracotta: #c45a3b;
+      --terracotta-light: #e8d5cd;
+      --clay: #8b5e3c;
+      --gold: #b8954a;
+      --gold-light: #f5ecd5;
+      --sage: #6b8e7a;
+      --sage-light: #d8e6de;
+      --purple: #7a6b9a;
+      --purple-light: #e8e4f0;
+
+      --bg: #faf7f2;
+      --surface: #ffffff;
+      --border: rgba(80, 55, 40, 0.12);
+      --text: #2d1f14;
+      --text-dim: #6b5a4f;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1512;
+        --surface: #252019;
+        --border: rgba(255, 255, 255, 0.06);
+        --text: #f0e6dc;
+        --text-dim: #9a8a7c;
+        --terracotta: #e07850;
+        --terracotta-light: rgba(224, 120, 80, 0.15);
+        --clay: #c4906a;
+        --gold: #d4b06a;
+        --gold-light: rgba(212, 176, 106, 0.15);
+        --sage: #8aab9a;
+        --sage-light: rgba(138, 171, 154, 0.15);
+        --purple: #9a8ab0;
+        --purple-light: rgba(154, 138, 176, 0.15);
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      padding: 24px;
+      min-height: 100vh;
+      line-height: 1.4;
+    }
+
+    @media (min-width: 1200px) {
+      body { padding: 32px 48px; }
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding: 24px;
+    }
+
+    .header__kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .header__title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 6vw, 52px);
+      margin-bottom: 8px;
+    }
+
+    .header__subtitle {
+      font-size: 16px;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Story Setup */
+    .story-setup {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 28px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .story-setup__icon { font-size: 28px; }
+    .story-setup__text { font-size: 15px; }
+    .story-setup__text strong { color: var(--terracotta); }
+
+    /* Main Flow */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 1000px) {
+      .flow {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 16px;
+      }
+    }
+
+    /* Level Cards */
+    .level-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      flex: 1;
+      min-width: 240px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .level-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+    }
+
+    .level-card.level-1::before { background: var(--terracotta); }
+    .level-card.level-2::before { background: var(--clay); }
+    .level-card.level-3::before { background: var(--gold); }
+    .level-card.level-4::before { background: var(--sage); }
+    .level-card.level-5::before { background: var(--purple); }
+
+    .level-card__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .level-card__icon {
+      font-size: 28px;
+    }
+
+    .level-card__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+    }
+
+    .level-card.level-1 .level-card__title { color: var(--terracotta); }
+    .level-card.level-2 .level-card__title { color: var(--clay); }
+    .level-card.level-3 .level-card__title { color: var(--gold); }
+    .level-card.level-4 .level-card__title { color: var(--sage); }
+    .level-card.level-5 .level-card__title { color: var(--purple); }
+
+    .level-card__subtitle {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .level-card__phrase {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: var(--bg);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      white-space: nowrap;
+    }
+
+    .level-card.level-1 .level-card__phrase { color: var(--terracotta); }
+    .level-card.level-2 .level-card__phrase { color: var(--clay); }
+    .level-card.level-3 .level-card__phrase { color: var(--gold); }
+    .level-card.level-4 .level-card__phrase { color: var(--sage); }
+    .level-card.level-5 .level-card__phrase { color: var(--purple); }
+
+    .level-card__skills {
+      flex: 1;
+    }
+
+    .skill-item {
+      font-size: 12px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-item:last-child { border: none; }
+    .skill-item__num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      min-width: 20px;
+    }
+
+    .level-card__footer {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .level-card.level-1 .level-card__footer { color: var(--terracotta); }
+    .level-card.level-2 .level-card__footer { color: var(--clay); }
+    .level-card.level-3 .level-card__footer { color: var(--gold); }
+    .level-card.level-4 .level-card__footer { color: var(--sage); }
+    .level-card.level-5 .level-card__footer { color: var(--purple); }
+
+    /* Summary Stats */
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .summary__stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .summary__number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--terracotta);
+    }
+
+    .summary__label {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* Story Arc */
+    .story-arc {
+      background: linear-gradient(135deg, var(--terracotta-light) 0%, var(--gold-light) 50%, var(--sage-light) 100%);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .story-arc h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .story-arc__path {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .story-arc__step {
+      background: var(--surface);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .story-arc__arrow {
+      color: var(--text-dim);
+      font-size: 18px;
+    }
+
+    /* Print styles */
+    @media print {
+      body { padding: 16px; }
+      .level-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header__kicker">5 Levels | 42 Skills | 1 Story</div>
+      <h1 class="header__title">PM Skills Story</h1>
+      <p class="header__subtitle">Một câu chuyện duy nhất giúp bạn nhớ <strong>42 kỹ năng PM</strong></p>
+    </header>
+
+    <div class="story-setup">
+      <span class="story-setup__icon">🏠</span>
+      <span class="story-setup__text">
+        <strong>Anh Minh</strong> sống trong căn phòng 20m² với gia đình 5 người.
+        Từ đó bạn xây dựng <strong>HomeCompact</strong> — công ty nhà modular AI.
+      </span>
+      <span class="story-setup__icon">🤖🚀</span>
+    </div>
+
+    <div class="flow">
+      <!-- Level 1 -->
+      <div class="level-card level-1">
+        <div class="level-card__header">
+          <span class="level-card__icon">🏠</span>
+          <div>
+            <div class="level-card__title">1. Foundation</div>
+            <div class="level-card__subtitle">Ngồi trong phòng, lắng nghe nỗi đau</div>
+          </div>
+        </div>
+        <div class="level-card__phrase">🔴 Đ.P.C.V.T</div>
+        <div class="level-card__skills">
+          <div class="skill-item"><span class="skill-item__num">01</span> Problem Statement</div>
+          <div class="skill-item"><span class="skill-item__num">02</span> Proto-Persona</div>
+          <div class="skill-item"><span class="skill-item__num">03</span> User Story</div>
+          <div class="skill-item"><span class="skill-item__num">04</span> Jobs-to-be-Done</div>
+          <div class="skill-item"><span class="skill-item__num">05</span> Press Release</div>
+        </div>
+        <div class="level-card__footer">5 Skills</div>
+      </div>
+
+      <!-- Level 2 -->
+      <div class="level-card level-2">
+        <div class="level-card__header">
+          <span class="level-card__icon">🔍</span>
+          <div>
+            <div class="level-card__title">2. Discovery</div>
+            <div class="level-card__subtitle">Ra ngoài thực tế, kiểm chứng</div>
+          </div>
+        </div>
+        <div class="level-card__phrase">🎙️ Phỏng-Ngày-Việc-Đối-Thị-Trời</div>
+        <div class="level-card__skills">
+          <div class="skill-item"><span class="skill-item__num">06</span> Discovery Interview</div>
+          <div class="skill-item"><span class="skill-item__num">07</span> Customer Journey Map</div>
+          <div class="skill-item"><span class="skill-item__num">08</span> User Story Mapping</div>
+          <div class="skill-item"><span class="skill-item__num">09</span> Company Research</div>
+          <div class="skill-item"><span class="skill-item__num">10</span> TAM-SAM-SOM</div>
+          <div class="skill-item"><span class="skill-item__num">11</span> PESTEL Analysis</div>
+        </div>
+        <div class="level-card__footer">6 Skills</div>
+      </div>
+
+      <!-- Level 3 -->
+      <div class="level-card level-3">
+        <div class="level-card__header">
+          <span class="level-card__icon">📐</span>
+          <div>
+            <div class="level-card__title">3. Strategy</div>
+            <div class="level-card__subtitle">Quay về bàn, vẽ bản thiết kế</div>
+          </div>
+        </div>
+        <div class="level-card__phrase">🎯 Khác-Cây-Nếu-Vẽ-Lộ-Xếp-Họp</div>
+        <div class="level-card__skills">
+          <div class="skill-item"><span class="skill-item__num">12</span> Positioning Statement</div>
+          <div class="skill-item"><span class="skill-item__num">13</span> Opportunity Solution Tree</div>
+          <div class="skill-item"><span class="skill-item__num">14</span> Epic Hypothesis</div>
+          <div class="skill-item"><span class="skill-item__num">15</span> PRD Development</div>
+          <div class="skill-item"><span class="skill-item__num">16</span> Roadmap Planning</div>
+          <div class="skill-item"><span class="skill-item__num">17</span> Prioritization Advisor</div>
+          <div class="skill-item"><span class="skill-item__num">18</span> Strategy Session</div>
+        </div>
+        <div class="level-card__footer">7 Skills</div>
+      </div>
+
+      <!-- Level 4 -->
+      <div class="level-card level-4">
+        <div class="level-card__header">
+          <span class="level-card__icon">💰</span>
+          <div>
+            <div class="level-card__title">4. Finance</div>
+            <div class="level-card__subtitle">Mở sổ sách, quản lý tiền bạc</div>
+          </div>
+        </div>
+        <div class="level-card__phrase">📈 Thu-Chi-Bảng-Đầu-Kiếm-Giá-Khám</div>
+        <div class="level-card__skills">
+          <div class="skill-item"><span class="skill-item__num">19</span> Revenue Metrics</div>
+          <div class="skill-item"><span class="skill-item__num">20</span> SaaS Economics</div>
+          <div class="skill-item"><span class="skill-item__num">21</span> Finance Quickref</div>
+          <div class="skill-item"><span class="skill-item__num">22</span> Feature Investment</div>
+          <div class="skill-item"><span class="skill-item__num">23</span> Channel Advisor</div>
+          <div class="skill-item"><span class="skill-item__num">24</span> Pricing Advisor</div>
+          <div class="skill-item"><span class="skill-item__num">25</span> Health Diagnostic</div>
+        </div>
+        <div class="level-card__footer">7 Skills</div>
+      </div>
+
+      <!-- Level 5 -->
+      <div class="level-card level-5">
+        <div class="level-card__header">
+          <span class="level-card__icon">🤖</span>
+          <div>
+            <div class="level-card__title">5. Advanced</div>
+            <div class="level-card__subtitle">Nâng cấp tương lai</div>
+          </div>
+        </div>
+        <div class="level-card__phrase">🤖 Sẵn-Ngữ-Thử-Chọn-Đánh</div>
+        <div class="level-card__skills">
+          <div class="skill-item"><span class="skill-item__num">26</span> AI Readiness</div>
+          <div class="skill-item"><span class="skill-item__num">27</span> Context Engineering</div>
+          <div class="skill-item"><span class="skill-item__num">28</span> PoL Probe</div>
+          <div class="skill-item"><span class="skill-item__num">29</span> Probe Advisor</div>
+          <div class="skill-item"><span class="skill-item__num">30</span> Rec. Canvas</div>
+          <div class="skill-item"><span class="skill-item__num">31</span> Epic Breakdown</div>
+          <div class="skill-item"><span class="skill-item__num">32</span> Storyboard</div>
+          <div class="skill-item"><span class="skill-item__num">33</span> Lean UX Canvas</div>
+          <div class="skill-item"><span class="skill-item__num">34</span> Problem Framing</div>
+          <div class="skill-item"><span class="skill-item__num">35</span> Positioning Workshop</div>
+          <div class="skill-item"><span class="skill-item__num">36</span> EOL Message</div>
+        </div>
+        <div class="level-card__footer">+6 = 42 Skills</div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary__stat">
+        <div class="summary__number">5</div>
+        <div class="summary__label">Chương / Levels</div>
+      </div>
+      <div class="summary__stat">
+        <div class="summary__number">42</div>
+        <div class="summary__label">Kỹ năng / Skills</div>
+      </div>
+      <div class="summary__stat">
+        <div class="summary__number">1</div>
+        <div class="summary__label">Câu chuyện / Story</div>
+      </div>
+    </div>
+
+    <div class="story-arc">
+      <h3>📖 Câu chuyện từ đầu đến cuối</h3>
+      <div class="story-arc__path">
+        <span class="story-arc__step">🏠 Nghe nỗi đau</span>
+        <span class="story-arc__arrow">→</span>
+        <span class="story-arc__step">🔍 Ra ngoài kiểm chứng</span>
+        <span class="story-arc__arrow">→</span>
+        <span class="story-arc__step">📐 Vẽ bản thiết kế</span>
+        <span class="story-arc__arrow">→</span>
+        <span class="story-arc__step">💰 Quản lý tiền</span>
+        <span class="story-arc__arrow">→</span>
+        <span class="story-arc__step">🤖 Nâng cấp AI</span>
+        <span class="story-arc__arrow">→</span>
+        <span class="story-arc__step">🚀 HomeCompact</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

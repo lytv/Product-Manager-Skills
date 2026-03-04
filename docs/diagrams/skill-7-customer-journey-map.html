@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #7: Customer Journey Map — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --terracotta: #c45a3b; --terracotta-light: #e8d5cd; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; --sage: #6b8e7a; --gold: #b8954a; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --terracotta: #e07850; --terracotta-light: rgba(224,120,80,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--terracotta-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--terracotta); }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--terracotta); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+    .insight { background: var(--surface); border-left: 4px solid var(--terracotta); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+    .timeline { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 32px; overflow-x: auto; }
+    .timeline h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 20px; text-align: center; }
+    .timeline-track { display: flex; min-width: 700px; position: relative; }
+    .timeline-track::before { content: ''; position: absolute; top: 24px; left: 0; right: 0; height: 3px; background: var(--border); }
+    .timeline-point { flex: 1; position: relative; text-align: center; padding-top: 50px; }
+    .timeline-point::before { content: attr(data-time); position: absolute; top: 0; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 11px; color: var(--terracotta); background: var(--surface); padding: 4px 8px; border-radius: 4px; }
+    .timeline-point__activity { font-size: 13px; margin-bottom: 8px; font-weight: 500; }
+    .timeline-point__pain { font-size: 12px; color: var(--terracotta); }
+    .legend { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .legend-dot.pain { background: var(--terracotta); }
+    .legend-dot.moment { background: var(--gold); }
+    .principles { background: var(--surface); border-radius: 14px; padding: 24px; }
+    .principles h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; }
+    .principles ul { list-style: none; }
+    .principles li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; display: flex; gap: 10px; }
+    .principles li:last-child { border: none; }
+    .principles li::before { content: '→'; color: var(--terracotta); }
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-2-discovery.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 2 → Skill #7</div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Skill #7 | Level 2: Discovery</div>
+      <h1 class="hero__title">Customer Journey Map</h1>
+      <p class="hero__subtitle">"Vẽ bản đồ MỘT NGÀY sống" — Hành trình khách hàng từ sáng đến tối</p>
+    </div>
+    <div class="insight"><p class="insight__text">"Đừng chỉ hỏi — hãy đi theo họ MỘT NGÀY rồi VẼ lại."</p></div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot pain"></div> 🔴 Pain Points</div>
+      <div class="legend-item"><div class="legend-dot moment"></div> ⭐ Moments of Truth</div>
+    </div>
+    <div class="timeline">
+      <h3>Một ngày của gia đình anh Minh trong căn phòng 20m²</h3>
+      <div class="timeline-track">
+        <div class="timeline-point" data-time="5:30"><div class="timeline-point__activity">Thức dậy<br>xếp hàng vào WC</div><div class="timeline-point__pain">😤 1 WC cho 5 người</div></div>
+        <div class="timeline-point" data-time="7:00"><div class="timeline-point__activity">Chuẩn bị<br>đi làm/học</div><div class="timeline-point__pain">😫 Tranh chập chờn</div></div>
+        <div class="timeline-point" data-time="12:00"><div class="timeline-point__activity">Vợ nấu ăn<br>bếp chật</div><div class="timeline-point__pain">😓 Không có chỗ nấu</div></div>
+        <div class="timeline-point" data-time="17:00"><div class="timeline-point__activity">Con học bài<br>trên bàn ăn</div><div class="timeline-point__pain">😢 Không có phòng học!</div></div>
+        <div class="timeline-point" data-time="21:00"><div class="timeline-point__activity">Ăn tối + TV<br>+ bài tập</div><div class="timeline-point__pain">😖 Ồn, không tập trung</div></div>
+        <div class="timeline-point" data-time="23:00"><div class="timeline-point__activity">Ngủ chung<br>1 phòng</div><div class="timeline-point__pain">😴 Mất ngủ vì con quấy</div></div>
+      </div>
+    </div>
+    <div class="principles">
+      <h3>4 Thành phần của Journey Map</h3>
+      <ul>
+        <li><strong>Phases</strong> — Các giai đoạn (Thức dậy → Làm việc → Ngủ)</li>
+        <li><strong>Actions</strong> — Hành động cụ thể trong mỗi giai đoạn</li>
+        <li><strong>Emotions</strong> — Cảm xúc tại mỗi touchpoint (vẽ đường cong)</li>
+        <li><strong>Opportunities</strong> — Insights và cơ hội cải thiện</li>
+      </ul>
+    </div>
+    <div class="nav-footer">
+      <a href="skill-6-discovery-interview.html" class="nav-btn"><span>← Back to</span><strong>Skill #6: Discovery Interview</strong></a>
+      <a href="skill-8-user-story-mapping.html" class="nav-btn"><span>Next →</span><strong>Skill #8: User Story Mapping</strong></a>
+    </div>
+  </div>
+</body>
+</html>

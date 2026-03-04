@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chương 5: Advanced & AI PM — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --purple: #7a6b9a; --purple-light: #e8e4f0; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; --sage: #6b8e7a; --gold: #b8954a; --terracotta: #c45a3b; --clay: #8b5e3c; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --purple: #9a8ab0; --purple-light: rgba(154,138,176,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--purple-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__title { font-family: var(--font-display); font-size: 14px; color: var(--text-dim); }
+    .header__chapter { font-family: var(--font-display); font-size: 28px; }
+    .hero { text-align: center; padding: 24px 0 32px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--purple); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(32px, 6vw, 48px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 16px; margin-bottom: 12px; }
+    .hero__phrase { font-family: var(--font-mono); font-size: 14px; color: var(--purple); background: var(--surface); padding: 12px 20px; border-radius: 8px; display: inline-block; }
+    .group-title { font-family: var(--font-display); font-size: 20px; margin: 24px 0 16px; text-align: center; color: var(--purple); }
+    .group-title.ai { color: var(--purple); }
+    .group-title.pm { color: var(--sage); }
+    .group-title.bye { color: var(--terracotta); }
+    .skills-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+    .skill-card:hover { transform: translateY(-2px); }
+    .skill-card__num { font-family: var(--font-mono); font-size: 12px; color: var(--purple); background: var(--purple-light); padding: 6px 10px; border-radius: 6px; }
+    .skill-card:nth-child(n+6) .skill-card__num { background: var(--sage); background: rgba(107, 142, 122, 0.15); color: var(--sage); }
+    .skill-card:last-child .skill-card__num { background: var(--terracotta); background: rgba(196, 90, 59, 0.15); color: var(--terracotta); }
+    .skill-card__content h3 { font-family: var(--font-display); font-size: 16px; margin-bottom: 2px; }
+    .skill-card__content p { font-size: 12px; color: var(--text-dim); }
+    .memory-box { background: var(--surface); border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+    .memory-box h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; text-align: center; }
+    .memory-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .memory-item { background: var(--bg); padding: 10px 8px; border-radius: 8px; text-align: center; font-size: 11px; }
+    .memory-item span { display: block; font-family: var(--font-mono); font-size: 10px; color: var(--purple); margin-bottom: 4px; }
+    .footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 18px; }
+    @media (max-width: 600px) { .skill-card { grid-template-columns: 1fr; text-align: center; } .memory-grid { grid-template-columns: repeat(3, 1fr); } .footer-nav { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="pm-skills-story-index.html" class="header__back">←</a>
+      <div><div class="header__title">PM Skills Story</div><div class="header__chapter">Chương 5</div></div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Level 5: Advanced & AI PM</div>
+      <h1 class="hero__title">🤖 Nâng Cấp Tương Lai</h1>
+      <p class="hero__subtitle">11 Skills: AI + PM Nâng cao + Kỹ năng bậc thầy</p>
+      <div class="hero__phrase">AI: Sẵn — Ngữ — Thử — Chọn — Đánh | PM: Chẻ — Kể — Học — Khung — Phát</div>
+    </div>
+
+    <div class="group-title group-title.ai">🤖 Nhóm AI (5 skills)</div>
+    <div class="skills-list">
+      <div class="skill-card"><div class="skill-card__num">01</div><div class="skill-card__content"><h3>AI-Shaped Readiness Advisor</h3><p>"SẴN sàng làm AI chưa?" — Kiểm tra 5 năng lực</p></div></div>
+      <div class="skill-card"><div class="skill-card__num">02</div><div class="skill-card__content"><h3>Context Engineering Advisor</h3><p>"Cho AI đúng NGỮ cảnh" — Context stuffing vs engineering</p></div></div>
+      <div class="skill-card"><div class="skill-card__num">03</div><div class="skill-card__content"><h3>PoL Probe</h3><p>"THỬ nghiệm nhỏ trước khi xây lớn"</p></div></div>
+      <div class="skill-card"><div class="skill-card__num">04</div><div class="skill-card__content"><h3>PoL Probe Advisor</h3><p>"CHỌN đúng loại thí nghiệm" — Smoke test, spike...</p></div></div>
+      <div class="skill-card"><div class="skill-card__num">05</div><div class="skill-card__content"><h3>Recommendation Canvas</h3><p>"ĐÁNH giá giải pháp AI" — So sánh options</p></div></div>
+    </div>
+
+    <div class="group-title group-title.pm">📋 Nhóm PM Nâng cao (5 skills)</div>
+    <div class="skills-list">
+      <div class="skill-card"><div class="skill-card__num">06</div><div class="skill-card__content"><h3>Epic Breakdown Advisor</h3><p>"CHẺ nhỏ dự án khổng lồ" — 9 cách cắt miếng voi</p></div></div>
+      <div class="skill-card"><div class="skill-card__num">07</div><div class="skill-card__content"><h3>Storyboard</h3><p>"KỂ chuyện bằng 6 khung hình"</p></div></div>
+      <div class="skill-card"><div class="skill-card__num">08</div><div class="skill-card__content"><h3>Lean UX Canvas</h3><p>"HỌC gì mỗi sprint?" — Hypothesis-driven</p></div></div>
+      <div class="skill-card"><div class="skill-card__num">09</div><div class="skill-card__content"><h3>Problem Framing Canvas</h3><p>"KHUNG lại vấn đề" — Trước khi giải quyết</p></div></div>
+      <div class="skill-card"><div class="skill-card__num">10</div><div class="skill-card__content"><h3>Positioning Workshop</h3><p>"PHÁT HIỆN định vị cùng team"</p></div></div>
+    </div>
+
+    <div class="group-title group-title.bye">👋 Nhóm Bye (1 skill)</div>
+    <div class="skills-list">
+      <div class="skill-card"><div class="skill-card__num">11</div><div class="skill-card__content"><h3>EOL Message</h3><p>"Lời CHIA TAY đẹp" — Khi sản phẩm kết thúc</p></div></div>
+    </div>
+
+    <div class="memory-box">
+      <h3>📚 Quy tắc nhớ: AI(Sẵn-Ngữ-Thử-Chọn-Đánh) + PM(Chẻ-Kể-Học-Khung-Phát) + Bye</h3>
+      <div class="memory-grid">
+        <div class="memory-item"><span>🔍 S</span>ẴN</div>
+        <div class="memory-item"><span>🧠 N</span>GỮ</div>
+        <div class="memory-item"><span>🧪 T</span>HỬ</div>
+        <div class="memory-item"><span>🎯 C</span>HỌN</div>
+        <div class="memory-item"><span>📊 Đ</span>ÁNH</div>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <a href="chapter-4-finance.html" class="nav-btn"><span>← Back to</span><strong>Chương 4: Finance</strong></a>
+      <a href="pm-skills-story-index.html" class="nav-btn"><span>← Back to</span><strong>All Chapters</strong></a>
+    </div>
+  </div>
+</body>
+</html>

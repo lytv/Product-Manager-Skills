@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #8: User Story Mapping — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --gold: #b8954a; --gold-light: #f5ecd5; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; --sage: #6b8e7a; --terracotta: #c45a3b; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --gold: #d4b06a; --gold-light: rgba(212,176,106,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--gold-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--gold); }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+    .insight { background: var(--surface); border-left: 4px solid var(--gold); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+    .mapping-visual { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 32px; overflow-x: auto; }
+    .mapping-visual h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 20px; text-align: center; }
+    .mapping-table { min-width: 600px; }
+    .mapping-row { display: grid; grid-template-columns: 100px repeat(5, 1fr); gap: 8px; margin-bottom: 8px; }
+    .mapping-header { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); padding: 8px; text-align: center; border-bottom: 2px solid var(--gold); }
+    .mapping-cell { background: var(--bg); padding: 12px 8px; border-radius: 6px; font-size: 13px; text-align: center; }
+    .mapping-cell.header { background: var(--gold-light); font-weight: 600; display: flex; align-items: center; justify-content: center; }
+    .mapping-release { grid-column: 1 / -1; border-top: 2px dashed var(--gold); margin-top: 16px; padding-top: 16px; text-align: center; font-family: var(--font-mono); font-size: 13px; color: var(--gold); }
+    .principles { background: var(--surface); border-radius: 14px; padding: 24px; }
+    .principles h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; }
+    .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (max-width: 600px) { .principles-grid { grid-template-columns: 1fr; } }
+    .principle-box { background: var(--bg); padding: 16px; border-radius: 10px; }
+    .principle-box h4 { font-family: var(--font-mono); font-size: 12px; color: var(--gold); margin-bottom: 8px; }
+    .principle-box p { font-size: 14px; color: var(--text-dim); }
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-2-discovery.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 2 → Skill #8</div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Skill #8 | Level 2: Discovery</div>
+      <h1 class="hero__title">User Story Mapping</h1>
+      <p class="hero__subtitle">"Lập bản đồ MỌI HOẠT ĐỘNG" — Tổ chức tasks thành ma trận 2 chiều</p>
+    </div>
+    <div class="insight"><p class="insight__text">"User Story là từng viên gạch. User Story MAP là bản vẽ toàn bộ ngôi nhà."</p></div>
+    <div class="mapping-visual">
+      <h3>Cấu trúc User Story Mapping</h3>
+      <div class="mapping-table">
+        <div class="mapping-row mapping-header">
+          <div></div>
+          <div>Ngủ nghỉ</div>
+          <div>Vệ sinh</div>
+          <div>Nấu ăn</div>
+          <div>Học tập</div>
+          <div>Giải trí</div>
+        </div>
+        <div class="mapping-row">
+          <div class="mapping-cell header">User Tasks</div>
+          <div class="mapping-cell">Ngủ riêng<br>Ngủ trưa</div>
+          <div class="mapping-cell">Tắm sáng<br>Đánh răng<br>Giặt đồ</div>
+          <div class="mapping-cell">Nấu cơm<br>Rửa chén<br>Pha sữa</div>
+          <div class="mapping-cell">Làm bài<br>Đọc sách<br>Dạy con</div>
+          <div class="mapping-cell">Xem TV<br>Chơi game</div>
+        </div>
+        <div class="mapping-row">
+          <div class="mapping-cell header">Activities</div>
+          <div class="mapping-cell">Nghỉ ngơi</div>
+          <div class="mapping-cell">Vệ sinh</div>
+          <div class="mapping-cell">Nấu nướng</div>
+          <div class="mapping-cell">Học hành</div>
+          <div class="mapping-cell">Giải trí</div>
+        </div>
+        <div class="mapping-release">────────── Release 1: SỐNG ĐƯỢC (Priority) ──────────</div>
+      </div>
+    </div>
+    <div class="principles">
+      <h3>2 Trục của User Story Map</h3>
+      <div class="principles-grid">
+        <div class="principle-box">
+          <h4>Backbone (Ngang)</h4>
+          <p>Các hoạt động chính - user flows lớn từ left to right</p>
+        </div>
+        <div class="principle-box">
+          <h4>User Tasks (Dọc)</h4>
+          <p>Chi tiết từng task, ưu tiên từ trên xuống dưới</p>
+        </div>
+      </div>
+    </div>
+    <div class="nav-footer">
+      <a href="skill-7-customer-journey-map.html" class="nav-btn"><span>← Back to</span><strong>Skill #7: Journey Map</strong></a>
+      <a href="skill-9-company-research.html" class="nav-btn"><span>Next →</span><strong>Skill #9: Company Research</strong></a>
+    </div>
+  </div>
+</body>
+</html>

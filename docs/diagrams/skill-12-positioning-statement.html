@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill #12: Positioning Statement — PM Skills Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'IBM Plex Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace; --gold: #b8954a; --gold-light: #f5ecd5; --bg: #faf7f2; --surface: #ffffff; --border: rgba(80, 55, 40, 0.12); --text: #2d1f14; --text-dim: #6b5a4f; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1512; --surface: #252019; --border: rgba(255,255,255,0.06); --text: #f0e6dc; --text-dim: #9a8a7c; --gold: #d4b06a; --gold-light: rgba(212,176,106,0.15); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); background-image: radial-gradient(ellipse at 0% 0%, var(--gold-light) 0%, transparent 50%); color: var(--text); font-family: var(--font-body); padding: 32px; min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .header__back { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .header__nav { font-size: 13px; color: var(--text-dim); }
+    .header__nav a { color: var(--gold); }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(32px, 7vw, 48px); margin-bottom: 8px; }
+    .hero__subtitle { color: var(--text-dim); font-size: 18px; }
+    .insight { background: var(--surface); border-left: 4px solid var(--gold); padding: 24px 32px; margin-bottom: 32px; border-radius: 0 14px 14px 0; }
+    .insight__text { font-family: var(--font-display); font-size: 20px; }
+    .positioning-box { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 32px; }
+    .positioning-box h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 20px; text-align: center; }
+    .p-structure { background: var(--bg); border-radius: 12px; padding: 24px; }
+    .p-line { display: flex; margin-bottom: 12px; align-items: baseline; gap: 12px; }
+    .p-line:last-child { margin-bottom: 0; }
+    .p-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--gold); min-width: 80px; }
+    .p-text { font-size: 15px; }
+    .p-text strong { color: var(--gold); }
+    .principles { background: var(--surface); border-radius: 14px; padding: 24px; }
+    .principles h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 16px; }
+    .principles ul { list-style: none; }
+    .principles li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .principles li:last-child { border: none; }
+    .principles li::before { content: '→'; color: var(--gold); margin-right: 10px; }
+    .nav-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .nav-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    .nav-btn strong { font-family: var(--font-display); font-size: 16px; }
+    @media (max-width: 600px) { .nav-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="chapter-3-strategy.html" class="header__back">←</a>
+      <div class="header__nav"><a href="pm-skills-story-index.html">Index</a> → Chương 3 → Skill #12</div>
+    </header>
+    <div class="hero">
+      <div class="hero__kicker">Skill #12 | Level 3: Strategy</div>
+      <h1 class="hero__title">Positioning Statement</h1>
+      <p class="hero__subtitle">"Mình KHÁC GÌ?" — Xác định vị thế cạnh tranh rõ ràng</p>
+    </div>
+    <div class="insight"><p class="insight__text">"Nếu không nói được mình KHÁC GÌ trong 30 giây, khách sẽ chọn thằng rẻ nhất."</p></div>
+    <div class="positioning-box">
+      <h3>Công thức Positioning</h3>
+      <div class="p-structure">
+        <div class="p-line"><span class="p-label">CHO</span><span class="p-text"><strong>Gia đình trẻ</strong> thu nhập trung bình đô thị</span></div>
+        <div class="p-line"><span class="p-label">ĐANG</span><span class="p-text">Sống <strong>chật chội</strong> dưới 30m²</span></div>
+        <div class="p-line"><span class="p-label">SẢN PHẨM</span><span class="p-text"><strong>HomeCompact</strong> — nhà modular thông minh</span></div>
+        <div class="p-line"><span class="p-label">KHÁC VỚI</span><span class="p-text">Nhà thầu truyền thống <strong>xây 6 tháng, đắt đỏ</strong></span></div>
+        <div class="p-line"><span class="p-label">VÌ MÌNH</span><span class="p-text"><strong>Lắp ráp 3 tuần</strong>, <strong>3 phòng</strong> trong 45m², giá <strong>500tr</strong></span></div>
+      </div>
+    </div>
+    <div class="principles">
+      <h3>3 Tips viết Positioning tốt</h3>
+      <ul>
+        <li>Ngắn gọn, dễ nhớ, ai cũng hiểu</li>
+        <li>Tập trung vào KHÁC BIỆT, không phải tính năng</li>
+        <li>Đặt khách hàng làm trung tâm</li>
+      </ul>
+    </div>
+    <div class="nav-footer">
+      <a href="chapter-3-strategy.html" class="nav-btn"><span>← Back to</span><strong>Chương 3</strong></a>
+      <a href="chapter-4-finance.html" class="nav-btn"><span>Next →</span><strong>Chương 4: Finance</strong></a>
+    </div>
+  </div>
+</body>
+</html>
